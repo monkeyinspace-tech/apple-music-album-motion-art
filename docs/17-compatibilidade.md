@@ -1,4 +1,4 @@
-# 17. Compatibilidade: Linux, Windows, macOS e Docker
+﻿# 17. Compatibilidade: Linux, Windows, macOS e Docker
 
 > **Resumo honesto:** desenvolvido e testado em **Linux**. Windows, macOS e Docker estão **preparados** (código endurecido, CI e `doctor`), mas **ainda não foram executados** nesses sistemas pelo autor. O CI do GitHub faz isso no primeiro *push* — veja "Como confirmar".
 
@@ -29,9 +29,9 @@ Após o primeiro `git push`, aba **Actions**: `tests · ubuntu py3.9/3.12`, `win
 
 ## Docker
 ```bash
-docker build -t album-motion-studio .                          # núcleo (PSD e capas sem recorte por IA)
-docker build -t album-motion-studio --build-arg WITH_AI=1 .     # + rembg/onnxruntime
-docker run --rm album-motion-studio                            # doctor
-docker run --rm -v "$PWD:/app/ws" -w /app/ws --user "$(id -u):$(id -g)" album-motion-studio init capa.psd work/proj
+docker build -t apple-music-album-motion-art .                          # núcleo (PSD e capas sem recorte por IA)
+docker build -t apple-music-album-motion-art --build-arg WITH_AI=1 .     # + rembg/onnxruntime
+docker run --rm apple-music-album-motion-art                            # doctor
+docker run --rm -v "$PWD:/app/ws" -w /app/ws --user "$(id -u):$(id -g)" apple-music-album-motion-art init capa.psd work/proj
 ```
 No PowerShell: `"${PWD}:/app/ws"` e sem `--user`.

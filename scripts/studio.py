@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
-"""Album Motion Studio — editor de motion por linha de comando (camadas · keyframes · efeitos · plugins).
+﻿#!/usr/bin/env python3
+"""Apple Music Album Motion Art — editor de motion por linha de comando (camadas · keyframes · efeitos · plugins).
 
 Fluxo típico
   studio.py init capa.png work/proj --template punk-impact --intensity bold     # ou capa.psd (camadas) / 3000x3000 / 4K
@@ -266,7 +266,7 @@ class {cls}:
 
 
 def cmd_new_effect(a):
-    pd = os.path.join(a.project, 'plugins') if a.project else os.path.join(os.path.expanduser('~'), '.album_motion_studio', 'plugins')
+    pd = os.path.join(a.project, 'plugins') if a.project else os.path.join(os.path.expanduser('~'), '.apple_music_album_motion_art', 'plugins')
     os.makedirs(pd, exist_ok=True)
     path = os.path.join(pd, f'{a.name}.py')
     if os.path.exists(path) and not a.force: sys.exit(f'já existe: {path} (use --force)')

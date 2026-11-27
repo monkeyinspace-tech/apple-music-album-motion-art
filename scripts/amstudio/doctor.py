@@ -1,4 +1,4 @@
-"""`studio.py doctor`: autodiagnóstico do ambiente + benchmark + autoteste ponta a ponta.
+﻿"""`studio.py doctor`: autodiagnóstico do ambiente + benchmark + autoteste ponta a ponta.
 
   studio.py doctor              verifica Python, FFmpeg (libx264/prores), bibliotecas, RAM, Unicode
   studio.py doctor --bench      + mede a velocidade desta máquina e ESTIMA o tempo de render
@@ -193,7 +193,7 @@ def selftest(rep):
 
 
 def run(args):
-    print(f'Album Motion Studio — doctor (v{__import__("amstudio").__version__})\n')
+    print(f'Apple Music Album Motion Art — doctor (v{__import__("amstudio").__version__})\n')
     rep = Report()
     check_env(rep)
     if args.selftest and not rep.failed:

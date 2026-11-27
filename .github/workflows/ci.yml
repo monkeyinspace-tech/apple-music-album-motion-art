@@ -1,0 +1,66 @@
+﻿name: CI
+
+on:
+  push: { branches: [main] }
+  pull_request:
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  test:
+    name: tests · ${{ matrix.os }} · py${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-latest,  python: "3.9"  }
+          - { os: ubuntu-latest,  python: "3.12" }
+          - { os: windows-latest, python: "3.11" }
+          - { os: macos-latest,   python: "3.11" }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "${{ matrix.python }}" }
+      - name: FFmpeg
+        uses: FedericoCarboni/setup-ffmpeg@v3
+        with: { token: "${{ secrets.GITHUB_TOKEN }}" }
+      - name: Dependências (núcleo, sem IA)
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+      - name: Diagnóstico do ambiente (doctor + autoteste)
+        run: python scripts/studio.py doctor --selftest
+      - name: Sintaxe
+        run: python -m py_compile scripts/*.py scripts/amstudio/*.py scripts/amstudio/fx/*.py tools/*.py examples/demo/*.py
+      - name: Catálogo de efeitos em dia
+        run: |
+          python scripts/studio.py effects --md > "$RUNNER_TEMP/cat.md"
+          python - "$RUNNER_TEMP/cat.md" <<'PY'
+          import sys
+          doc = open('docs/12-catalogo-de-efeitos.md', encoding='utf-8').read()
+          cat = open(sys.argv[1], encoding='utf-8').read()
+          assert cat.strip() in doc, 'docs/12-catalogo-de-efeitos.md desatualizado: rode make effects-doc'
+          PY
+      - name: Templates válidos
+        run: python scripts/check_config.py configs/templates/*.json examples/demo/demo_config.json
+      - name: Testes
+        run: pytest -q
+
+  docker:
+    name: docker · build + doctor
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: docker build -t apple-music-album-motion-art .
+      - name: Diagnóstico + autoteste dentro do contêiner
+        run: docker run --rm apple-music-album-motion-art doctor --selftest
+      - name: Fluxo da demo dentro do contêiner
+        run: |
+          mkdir -p work && chmod 777 work
+          docker run --rm -v "$PWD:/app/ws" -w /app/ws --user "$(id -u):$(id -g)" apple-music-album-motion-art init examples/demo/demo_cover.png work/demo --template examples/demo/demo_config.json
+          docker run --rm -v "$PWD:/app/ws" -w /app/ws --user "$(id -u):$(id -g)" apple-music-album-motion-art check work/demo

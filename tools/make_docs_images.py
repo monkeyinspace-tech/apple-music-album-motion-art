@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Gera as ilustrações da documentação (docs/assets/*.png) a partir da arte de DEMONSTRAÇÃO (CC0).
 
 Tudo é desenhado do zero (Pillow) — NÃO usa imagens, telas ou ícones da Apple nem capas de terceiros.
@@ -201,7 +201,7 @@ def social(out, tall):
     d.text((72, 340), 'Capa estática → Apple Music Album Motion Art', font=font(30), fill=(255, 210, 232))
     d.text((72, 392), 'Camadas · keyframes · efeitos · PSD · 3000² e 4K · loop perfeito', font=font(24), fill=(200, 180, 220))
     d.text((72, 436), 'Validação automática · skill e agente de IA', font=font(24), fill=(200, 180, 220))
-    d.rounded_rectangle([72, 520, 440, 572], 26, fill=PINK); d.text((100, 531), 'github.com/uaigoiano-max', font=font(22, True), fill=(20, 8, 30))
+    d.rounded_rectangle([72, 520, 440, 572], 26, fill=PINK); d.text((100, 531), 'github.com/monkeyinspace-tech', font=font(22, True), fill=(20, 8, 30))
     img.convert('RGB').save(os.path.join(out, 'social-preview.png'))
 
 

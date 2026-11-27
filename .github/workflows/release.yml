@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  build-skill:
+    name: Build & publish .skill
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Build skill
+        run: python tools/build_skill.py
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: apple-motion-art.skill
+          path: dist/apple-motion-art.skill
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/apple-motion-art.skill
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

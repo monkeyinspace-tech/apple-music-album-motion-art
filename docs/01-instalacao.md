@@ -1,4 +1,4 @@
-# 1. Instalação
+﻿# 1. Instalação
 
 ## Requisitos
 | Item | Mínimo | Observação |
@@ -16,7 +16,7 @@ Dois níveis de instalação:
 ## Ubuntu / Debian
 ```bash
 sudo apt update && sudo apt install -y ffmpeg python3 python3-venv git
-git clone https://github.com/uaigoiano-max/album-motion-studio.git && cd album-motion-studio
+git clone https://github.com/monkeyinspace-tech/apple-music-album-motion-art.git && cd apple-music-album-motion-art
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 pip install -r requirements-ai.txt      # opcional (recorte de sujeito)
@@ -26,7 +26,7 @@ python scripts/validate_motion.py --help
 ## macOS
 ```bash
 brew install ffmpeg python git
-git clone https://github.com/uaigoiano-max/album-motion-studio.git && cd album-motion-studio
+git clone https://github.com/monkeyinspace-tech/apple-music-album-motion-art.git && cd apple-music-album-motion-art
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt && pip install -r requirements-ai.txt
 ```
@@ -35,8 +35,8 @@ pip install -r requirements.txt && pip install -r requirements-ai.txt
 ## Windows 10/11
 Opção automática (PowerShell):
 ```powershell
-git clone https://github.com/uaigoiano-max/album-motion-studio.git
-cd album-motion-studio
+git clone https://github.com/monkeyinspace-tech/apple-music-album-motion-art.git
+cd apple-music-album-motion-art
 powershell -ExecutionPolicy Bypass -File .\install.ps1
 ```
 Opção manual:
@@ -53,8 +53,8 @@ Feche e reabra o terminal após instalar o FFmpeg (o PATH é atualizado). Confir
 
 ## Docker
 ```bash
-docker build -t album-motion-studio .
-docker run --rm -v "$PWD/work:/work" album-motion-studio \
+docker build -t apple-music-album-motion-art .
+docker run --rm -v "$PWD/work:/work" apple-music-album-motion-art \
   python scripts/render_motion.py --cover /work/capa.png --config /work/config.json --outdir /work/out --preview
 ```
 > O `Dockerfile` não foi testado pelo autor. Os modelos de IA são baixados na 1ª execução (precisa de internet).

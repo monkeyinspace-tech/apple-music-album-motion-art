@@ -1,8 +1,8 @@
-# One-click installer for Album Motion Studio (Windows / PowerShell)
+﻿# One-click installer for Apple Music Album Motion Art (Windows / PowerShell)
 $ErrorActionPreference = 'Stop'
 
 $PY = if ($env:PY) { $env:PY } else { 'python' }
-Write-Host "🎬 Album Motion Studio — instalador" -ForegroundColor Cyan
+Write-Host "🎬 Apple Music Album Motion Art — instalador" -ForegroundColor Cyan
 
 # 1. Python
 if (-not (Get-Command $PY -ErrorAction SilentlyContinue)) {

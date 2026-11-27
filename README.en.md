@@ -1,8 +1,8 @@
-<div align="center">
+﻿<div align="center">
 
-<img src="docs/assets/banner.svg" alt="Album Motion Studio" width="100%">
+<img src="docs/assets/banner.svg" alt="Apple Music Album Motion Art" width="100%">
 
-# 🎬 Album Motion Studio
+# 🎬 Apple Music Album Motion Art
 
 **Turn your release cover into Apple Music *Album Motion Art* — creative, perfectly looped and pre-validated against the rules that get files rejected.**
 
@@ -47,7 +47,7 @@ The simple v1 flow (`render_motion.py` + `config.json`) still works.
 ## Install
 Requirements: Python 3.9+, FFmpeg/FFprobe, ~3 GB free RAM, ~1 GB disk for AI models (optional).
 ```bash
-git clone https://github.com/uaigoiano-max/album-motion-studio.git && cd album-motion-studio
+git clone https://github.com/monkeyinspace-tech/apple-music-album-motion-art.git && cd apple-music-album-motion-art
 python3 -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
 pip install -r requirements.txt                          # core + PSD reading
 pip install -r requirements-ai.txt                       # subject cut-out on flat covers (rembg) — optional

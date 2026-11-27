@@ -1,18 +1,18 @@
-<div align="center">
+﻿<div align="center">
 
-<img src="docs/assets/banner.svg" alt="Album Motion Studio" width="100%">
+<img src="docs/assets/banner.svg" alt="Apple Music Album Motion Art" width="100%">
 
-# 🎬 Album Motion Studio
+# 🎬 Apple Music Album Motion Art
 
 **Um estúdio de motion em Python (e dentro do Claude) que transforma a capa — ou o PSD — do seu lançamento em *Apple Music Album Motion Art*: com camadas, keyframes, efeitos, plugins e validação automática.**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/monkeyinspace-tech/album-motion-studio?label=release)](https://github.com/monkeyinspace-tech/album-motion-studio/releases)
-[![CI](https://github.com/monkeyinspace-tech/album-motion-studio/actions/workflows/ci.yml/badge.svg)](https://github.com/monkeyinspace-tech/album-motion-studio/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/monkeyinspace-tech/apple-music-album-motion-art?label=release)](https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases)
+[![CI](https://github.com/monkeyinspace-tech/apple-music-album-motion-art/actions/workflows/ci.yml/badge.svg)](https://github.com/monkeyinspace-tech/apple-music-album-motion-art/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.9%2B-3776AB?logo=python&logoColor=white)
 ![FFmpeg](https://img.shields.io/badge/ffmpeg-required-007808?logo=ffmpeg&logoColor=white)
 ![Input](https://img.shields.io/badge/entrada-PNG%20%C2%B7%20JPG%20%C2%B7%20TIFF%20%C2%B7%203000%C2%B2%20%C2%B7%204K%20%C2%B7%20PSD-ff4fa3)
-[![CI](https://github.com/uaigoiano-max/album-motion-studio/actions/workflows/ci.yml/badge.svg)](https://github.com/uaigoiano-max/album-motion-studio/actions)
+[![CI](https://github.com/monkeyinspace-tech/apple-music-album-motion-art/actions/workflows/ci.yml/badge.svg)](https://github.com/monkeyinspace-tech/apple-music-album-motion-art/actions)
 
 [🇧🇷 Português](README.md) · [🇺🇸 English](README.en.md)
 
@@ -84,13 +84,13 @@ flowchart LR
 
 ```bash
 # Linux / macOS
-git clone https://github.com/monkeyinspace-tech/album-motion-studio.git
-cd album-motion-studio
+git clone https://github.com/monkeyinspace-tech/apple-music-album-motion-art.git
+cd apple-music-album-motion-art
 bash install.sh
 
 # Windows (PowerShell)
-git clone https://github.com/monkeyinspace-tech/album-motion-studio.git
-cd album-motion-studio
+git clone https://github.com/monkeyinspace-tech/apple-music-album-motion-art.git
+cd apple-music-album-motion-art
 powershell -ExecutionPolicy Bypass -File install.ps1
 ```
 
@@ -99,8 +99,8 @@ O instalador cria o venv, instala as dependências, instala o FFmpeg (via winget
 ### Manual
 
 ```bash
-git clone https://github.com/monkeyinspace-tech/album-motion-studio.git
-cd album-motion-studio
+git clone https://github.com/monkeyinspace-tech/apple-music-album-motion-art.git
+cd apple-music-album-motion-art
 python3 -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\activate
 pip install -r requirements.txt                         # núcleo + leitura de PSD
 pip install -r requirements-ai.txt                      # (opcional) recorte de pessoa em capa plana
@@ -180,4 +180,4 @@ Tudo roda **localmente**. Capas e PSDs inéditos **não vão para o repositório
 
 [`CONTRIBUTING.md`](CONTRIBUTING.md) · [`CHANGELOG.md`](CHANGELOG.md) · [MIT](LICENSE) (modelos do `rembg` têm licenças próprias).
 
-<div align="center"><sub>Feito com 🐒 por <b>Monkey In Space Music Group</b> · <a href="https://github.com/uaigoiano-max">@uaigoiano-max</a> · Apple Music é marca da Apple Inc.; este projeto não é afiliado nem endossado pela Apple.</sub></div>
+<div align="center"><sub>Feito com 🐒 por <b>Monkey In Space Music Group</b> · <a href="https://github.com/monkeyinspace-tech">@monkeyinspace-tech</a> · Apple Music é marca da Apple Inc.; este projeto não é afiliado nem endossado pela Apple.</sub></div>

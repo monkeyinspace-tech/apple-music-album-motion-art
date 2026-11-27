@@ -1,9 +1,9 @@
-#!/usr/bin/env bash
-# One-click installer for Album Motion Studio (Linux/macOS)
+﻿#!/usr/bin/env bash
+# One-click installer for Apple Music Album Motion Art (Linux/macOS)
 set -euo pipefail
 
 PY=${PY:-python3}
-echo "🎬 Album Motion Studio — instalador"
+echo "🎬 Apple Music Album Motion Art — instalador"
 
 # 1. Python
 if ! command -v "$PY" >/dev/null 2>&1; then

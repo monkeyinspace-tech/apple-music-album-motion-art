@@ -1,4 +1,4 @@
-# 14. Criando seus próprios efeitos (plugins)
+﻿# 14. Criando seus próprios efeitos (plugins)
 
 O catálogo embutido não é o limite: **qualquer efeito pode ser escrito em Python** em ~20 linhas e usado como os demais. É assim que uma IA (ou você) cria "o que o usuário imaginou" sem esperar uma nova versão do projeto.
 
@@ -9,7 +9,7 @@ python scripts/studio.py new-effect chuva_neon --kind generator --project work/p
 python scripts/studio.py add-layer work/proj --id chuva --effect chuva_neon           # 3. use
 python scripts/studio.py check work/proj                                              #    valide
 ```
-Plugins em `projeto/plugins/` valem para aquele projeto. Para efeitos globais, coloque `.py` em `~/.album_motion_studio/plugins/` e rode `new-effect` sem `--project` (o `render` e o `check` carregam os plugins do projeto).
+Plugins em `projeto/plugins/` valem para aquele projeto. Para efeitos globais, coloque `.py` em `~/.apple_music_album_motion_art/plugins/` e rode `new-effect` sem `--project` (o `render` e o `check` carregam os plugins do projeto).
 
 ## Dois tipos
 ### Gerador — desenha direto no quadro

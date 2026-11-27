@@ -1,4 +1,4 @@
-# Política de segurança
+﻿# Política de segurança
 
 ## Versões suportadas
 
@@ -11,7 +11,7 @@
 
 Se você encontrou uma vulnerabilidade de segurança neste projeto, **não abra uma issue pública**.
 
-Envie um e-mail para: **security@monkeyinspace.tech** (ou abra uma [Security Advisory](https://github.com/monkeyinspace-tech/album-motion-studio/security/advisories/new) privada).
+Envie um e-mail para: **security@monkeyinspace.tech** (ou abra uma [Security Advisory](https://github.com/monkeyinspace-tech/apple-music-album-motion-art/security/advisories/new) privada).
 
 Inclua:
 - Descrição da vulnerabilidade

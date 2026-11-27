@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
-"""Valida um config.json do Album Motion Studio (chaves, tipos e coordenadas no espaço 2048x2048).
+﻿#!/usr/bin/env python3
+"""Valida um config.json do Apple Music Album Motion Art (chaves, tipos e coordenadas no espaço 2048x2048).
 
 Uso: check_config.py configs/templates/punk-impact.json [outro.json ...]
 Código de saída 1 se houver ERRO. AVISOS não reprovam.
