@@ -96,4 +96,3 @@ Ver `references/troubleshooting.md`. Resumo: 15 Mbps reprova (use 45–100); SAR
 
 ## Créditos e parceiros
 Criado por **Monkey In Space Music Group** (https://github.com/monkeyinspace-tech), pensando em colaborar e ajudar **artistas**, **gravadoras** e **distribuidoras** a produzir **Apple Music Album Motion Art** com qualidade profissional.
-Parceiro: **Virgin Music Group** (https://virginmusic.com/).

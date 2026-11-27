@@ -169,34 +169,23 @@ Testado em **Linux**. Windows, macOS e Docker preparados (CI matrix). `studio.py
 
 [Instalação](docs/01-instalacao.md) · [Guia rápido](docs/02-guia-rapido.md) · [Specs Apple](docs/05-especificacoes-apple.md) · [Troubleshooting](docs/06-validacao-e-troubleshooting.md) · [Skill/agente](docs/07-skill-e-agente.md) · [FAQ](docs/08-faq.md) · [Direitos](docs/09-direitos-e-explicito.md) · [Motion Studio](docs/10-motion-studio.md) · [Cena](docs/11-formato-da-cena.md) · [Efeitos](docs/12-catalogo-de-efeitos.md) · [PSD](docs/13-photoshop-psd.md) · [Plugins](docs/14-criar-efeitos.md) · [Diretor criativo](docs/15-diretor-criativo.md) · [Desempenho](docs/16-desempenho.md) · [Compatibilidade](docs/17-compatibilidade.md) · [Privacidade](docs/18-privacidade-e-testes.md) · [Publicar no GitHub](docs/github-setup.md)
 
-## 🏢 Créditos, parceiros e licença
+## 🏢 Créditos e licença
 
 <div align="center">
 
-<table>
-<tr>
-<td align="center" width="50%">
 <a href="https://github.com/monkeyinspace-tech">
 <img src="https://img.shields.io/badge/Monkey_In_Space-Music_Group-1D8A4E?style=for-the-badge&logo=github&logoColor=white" alt="Monkey In Space Music Group">
 </a>
+
 <br><br>
+
 <b>Criado por Monkey In Space Music Group</b>
-<br>
-<sub>Pensando em colaborar e ajudar <b>artistas</b>, <b>gravadoras</b> e <b>distribuidoras</b> a produzir <b>Apple Music Album Motion Art</b> com qualidade profissional, de forma repetível e acessível.</sub>
-</td>
-<td align="center" width="50%">
-<a href="https://virginmusic.com/">
-<img src="https://img.shields.io/badge/Virgin_Music-Group-E8763A?style=for-the-badge&logoColor=white" alt="Virgin Music Group">
-</a>
-<br><br>
-<b>Parceiro oficial</b>
-<br>
-<sub>Apoio e distribuição. Colaboração estratégica para levar a arte em motion a mais artistas e selos.</sub>
-</td>
-</tr>
-</table>
 
 <br>
+
+<sub>Pensando em colaborar e ajudar <b>artistas</b>, <b>gravadoras</b> e <b>distribuidoras</b> a produzir <b>Apple Music Album Motion Art</b> com qualidade profissional, de forma repetível e acessível.</sub>
+
+<br><br>
 
 <table>
 <tr>

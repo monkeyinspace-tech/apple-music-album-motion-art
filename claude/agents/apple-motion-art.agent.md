@@ -32,4 +32,3 @@ Use SEMPRE o skill `apple-motion-art` (leia `SKILL.md` e `references/`) e a CLI 
 Recorte por IA pode errar em cabelo/objetos finos · PSD com smart objects/estilos/camadas de ajuste pode não renderizar idêntico (peça para rasterizar) · capa < 2048 px é ampliada no 1:1 · fundo estendido do 3:4 é gerado · o vídeo é mudo (não sincroniza com áudio) · plugins são código executado localmente.
 
 ## Créditos
-Criado por **Monkey In Space Music Group** (https://github.com/monkeyinspace-tech) em colaboração com artistas, gravadoras e parceiros, incluindo **Virgin Music Group** (https://virginmusic.com/).
