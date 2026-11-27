@@ -6,10 +6,7 @@ Qualquer capa, PSD, TIFF ou vídeo que não esteja na lista reprova o teste — 
 import fnmatch, os
 from conftest import ROOT
 
-ALLOW = ['docs/assets/*', 'examples/demo/demo_cover.png', 'examples/demo/demo_contact_sheet.jpg',
-         'docs/assets/demo_evc_1x1.gif', 'docs/assets/demo_evc_3x4.gif',
-         'docs/assets/demo_upc_1x1.gif', 'docs/assets/demo_upc_3x4.gif',
-         'docs/assets/cover_voce_chegou.jpg', 'docs/assets/cover_ekanta.png']
+ALLOW = ['docs/assets/*', 'examples/demo/demo_cover.png', 'examples/demo/demo_contact_sheet.jpg']
 BINARY = ('.png', '.jpg', '.jpeg', '.gif', '.webp', '.psd', '.psb', '.tif', '.tiff', '.mov', '.mp4', '.mkv', '.avi', '.bmp', '.heic')
 SKIP_DIRS = {'.git', '__pycache__', '.pytest_cache', 'dist', 'work', 'out', '.cache', 'node_modules', '.venv'}
 

@@ -25,6 +25,8 @@ A Apple Music permite trocar a capa estática do álbum por um **vídeo curto em
 
 > **1 capa (ou PSD) → 2 vídeos prontos** — `[UPC]_1x1.mov` (3840×3840) e `[UPC]_3x4.mov` (2048×2732) — com **frame 0 idêntico à capa**, **loop sem salto** e checagem das regras da Apple/distribuidora.
 
+<div align="center"><img src="docs/assets/where-it-appears.png" alt="Onde o Album Motion aparece" width="92%"></div>
+
 ## 👥 Quem usa
 
 | Público | O que ganha |
@@ -52,6 +54,9 @@ flowchart LR
 2. **Efeitos** — fumaça viva, título com brilho, trincas pulsando, ondas de choque, estilhaços, brasas, sparkles, câmera, vinheta… ou **plugins seus**.
 3. **Loop perfeito por construção** — todo efeito nasce e morre em zero.
 
+<div align="center"><img src="docs/assets/layers-explainer.png" alt="Camadas" width="92%"></div>
+<div align="center"><img src="docs/assets/loop-timeline.png" alt="Loop" width="92%"></div>
+
 ## ✨ Recursos
 
 | | |
@@ -68,7 +73,7 @@ flowchart LR
 
 ## 🎬 Exemplos reais (capas animadas)
 
-### EKANTA — EU VOU CANTAR
+### Exemplo 1 — EKANTA (EU VOU CANTAR)
 
 <div align="center">
 <img src="docs/assets/cover_ekanta.png" alt="Capa EKANTA" width="300">
@@ -79,7 +84,7 @@ flowchart LR
 <sub>Capa 3000×3000 → 1:1 (3840²) e 3:4 (2048×2732). Loop de 12 s, H.264 80 Mbps.</sub>
 </div>
 
-### Você Chegou
+### Exemplo 2 — Você Chegou
 
 <div align="center">
 <img src="docs/assets/cover_voce_chegou.jpg" alt="Capa Você Chegou" width="300">
@@ -88,6 +93,15 @@ flowchart LR
 <img src="docs/assets/demo_evc_3x4.gif" alt="Demo 3:4" width="250">
 <br>
 <sub>Capa JPEG → 1:1 (3840²) e 3:4 (2048×2732). Loop de 12 s, H.264 80 Mbps.</sub>
+</div>
+
+### Demo original (capa procedural)
+
+<div align="center">
+<img src="docs/assets/demo.gif" alt="Demo: capa plana" width="250"> &nbsp;
+<img src="docs/assets/demo-psd.gif" alt="Demo: PSD em camadas" width="250">
+<br>
+<sub>Esquerda: capa plana (camadas separadas por IA). Direita: PSD em camadas, intensidade `bold`. Geradas por este projeto sobre arte procedural (`examples/demo`). Loop de 12 s, formato 3:4.</sub>
 </div>
 
 ## 🛠 Instalação
@@ -204,6 +218,8 @@ A pasta [`claude/`](claude/) traz um **skill** e **agentes** que atuam como dire
 | `typographic-poster` · `abstract-flow` · `minimal` | Tipografia · abstrata · ponto de partida | ❌ |
 
 `punk-impact` e `portrait-clean` (recorte automático) foram testados em **capa real**; os demais têm preview testado no CI. Ajuste e rode sempre o `preview`.
+
+<div align="center"><img src="docs/assets/safe-area.png" alt="Safe Area do 3:4" width="80%"></div>
 
 ## 🖥 Compatibilidade
 
