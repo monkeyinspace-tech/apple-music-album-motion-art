@@ -23,6 +23,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: dist/apple-motion-art.skill
-          body: "Release automática do Apple Music Album Motion Art."
+          body: "Release automatica do Apple Music Album Motion Art."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
