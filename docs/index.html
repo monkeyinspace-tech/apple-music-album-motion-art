@@ -35,6 +35,7 @@
   }
   a { color: inherit; text-decoration: none; }
   :focus-visible { outline: 2px solid var(--ouro); outline-offset: 3px; }
+  img { max-width: 100%; height: auto; }
 
   /* Hero */
   .hero {
@@ -119,6 +120,11 @@
     text-transform: uppercase;
     margin: 0;
   }
+  .sec-head p {
+    margin-top: 12px;
+    color: var(--ash);
+    max-width: 70ch;
+  }
 
   /* Cards grid */
   .cards {
@@ -175,7 +181,6 @@
     padding: 20px;
     text-align: center;
   }
-  .example img { max-width: 100%; height: auto; margin: 8px 0; }
   .example h3 {
     font-family: var(--display);
     font-weight: 700;
@@ -184,24 +189,68 @@
     margin-bottom: 12px;
     color: var(--bone);
   }
+  .example .capa { margin: 8px auto; }
   .example .gifs {
     display: flex;
     gap: 8px;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 8px 0;
   }
   .example .gifs img { width: 48%; max-width: 200px; }
-  .example sub { color: var(--ash); font-size: 0.8rem; }
+  .example sub { color: var(--ash); font-size: 0.8rem; display: block; margin-top: 8px; }
 
-  /* Footer */
-  footer {
-    border-top: 1px solid #23231f;
-    padding: 40px 0;
-    text-align: center;
+  /* Info boxes */
+  .info-box {
+    background: var(--coal);
+    border-left: 4px solid var(--mata);
+    padding: 20px 24px;
+    margin: 24px 0;
   }
-  footer .logo { font-family: var(--display); font-weight: 900; font-size: 1.2rem; color: var(--bone); margin-bottom: 8px; }
-  footer small { color: var(--ash); font-family: var(--mono); font-size: 11px; letter-spacing: .08em; }
-  footer a { color: var(--ouro); }
+  .info-box h4 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: var(--bone);
+  }
+  .info-box p { color: var(--ash); font-size: 0.95rem; margin: 0; }
+  .info-box ul { color: var(--ash); font-size: 0.95rem; margin: 8px 0 0 20px; }
+  .info-box li { margin: 4px 0; }
+
+  /* Steps */
+  .steps { counter-reset: step; }
+  .step {
+    display: flex;
+    gap: 16px;
+    margin: 16px 0;
+    align-items: flex-start;
+  }
+  .step-num {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 2rem;
+    color: var(--ouro);
+    line-height: 1;
+    min-width: 40px;
+  }
+  .step-content h4 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    color: var(--bone);
+  }
+  .step-content p { color: var(--ash); font-size: 0.9rem; margin: 0; }
+  .step-content code {
+    background: #23231f;
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    color: var(--ouro);
+  }
 
   /* Ticker */
   .ticker {
@@ -226,6 +275,16 @@
   }
   .ticker i { font-style: normal; color: var(--mata); margin: 0 12px; }
   @keyframes roll { to { transform: translateX(-50%); } }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid #23231f;
+    padding: 40px 0;
+    text-align: center;
+  }
+  footer .logo { font-family: var(--display); font-weight: 900; font-size: 1.2rem; color: var(--bone); margin-bottom: 8px; }
+  footer small { color: var(--ash); font-family: var(--mono); font-size: 11px; letter-spacing: .08em; }
+  footer a { color: var(--ouro); }
 
   @media (max-width: 600px) {
     .cards { grid-template-columns: 1fr; }
@@ -259,16 +318,87 @@
 
 <div class="wrap">
 
+<!-- O que é Apple Music Motion Art -->
+<section>
+  <div class="sec-head">
+    <span class="label">Contexto</span>
+    <h2>O que é Apple Music Motion Art?</h2>
+  </div>
+  <div class="info-box">
+    <h4>Apple Music Album Motion Art</h4>
+    <p>A Apple Music permite que artistas e selos substituam a capa estática do álbum por um <strong>vídeo curto em loop</strong> que aparece na página do álbum, na busca e nas playlists. É uma forma de dar vida à arte do lançamento e destacar o trabalho na plataforma.</p>
+    <ul>
+      <li><strong>Formatos:</strong> 1:1 (3840×3840) e 3:4 (2048×2732)</li>
+      <li><strong>Codec:</strong> H.264 (45–100 Mbps) ou ProRes 422/4444</li>
+      <li><strong>Duração:</strong> 8–35 segundos (algumas distribuidoras exigem 15–35s)</li>
+      <li><strong>Requisitos:</strong> primeiro frame = capa estática, loop sem salto, mudo, Rec.709, SAR 1:1, sem selo Parental Advisory na arte</li>
+    </ul>
+  </div>
+  <p style="color: var(--ash); font-size: 0.9rem; margin-top: 12px;">
+    Fontes oficiais: <a href="https://help.apple.com/itc/musicstyleguide/en.lproj/itc7d4b161d8.html" style="color: var(--ouro);">Motion Album Artwork</a> · <a href="https://itunespartner.apple.com/music/support/5245-album-motion-art-delivery" style="color: var(--ouro);">Album Motion Art Delivery</a>
+  </p>
+</section>
+
+<!-- O que o projeto faz -->
+<section>
+  <div class="sec-head">
+    <span class="label">O projeto</span>
+    <h2>O que o Apple Music Album Motion Art faz</h2>
+  </div>
+  <div class="info-box" style="border-left-color: var(--ouro);">
+    <h4>Estúdio de motion completo</h4>
+    <p>Transforma uma capa (PNG/JPG/TIFF) ou um PSD em camadas em <strong>2 vídeos prontos para a Apple Music</strong> — com camadas, keyframes, efeitos, plugins e validação automática. Tudo roda localmente, sem After Effects, sem motion designer.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Prepare o material</h4>
+        <p>Capa plana (PNG/JPG/TIFF) ou PSD em camadas. Qualquer tamanho: 2048, 3000 ou 4K. Se não for quadrada, use <code>--fit crop</code> ou <code>--fit extend</code>.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Inicialize o projeto</h4>
+        <p><code>studio.py init capa.png work/proj --template punk-impact</code> — cria o projeto com camadas, efeitos e movimento inicial.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Edite e faça preview</h4>
+        <p>Adicione camadas, efeitos, keyframes. Veja o preview (folha de contato, GIF) e itere com o usuário.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Cheque e renderize</h4>
+        <p><code>studio.py check</code> valida frame 0, loop, flash e brilho. <code>studio.py render</code> gera os .mov (3:4 e 1:1).</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>Valide e entregue</h4>
+        <p><code>validate_motion.py</code> confirma resolução, SAR, bitrate, duração e codec. Tudo ✅ = pronto para a distribuidora.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Exemplos reais -->
 <section>
   <div class="sec-head">
     <span class="label">Resultados reais</span>
     <h2>Exemplos</h2>
+    <p>Capas reais de lançamentos animadas com o projeto. Cada uma gera 2 vídeos: 1:1 (3840×3840) e 3:4 (2048×2732).</p>
   </div>
   <div class="examples">
     <div class="example">
       <h3>EKANTA — EU VOU CANTAR</h3>
-      <img src="assets/cover_ekanta.png" alt="Capa EKANTA" width="180">
+      <img class="capa" src="assets/cover_ekanta.png" alt="Capa EKANTA" width="180">
       <div class="gifs">
         <img src="assets/demo_evc_1x1.gif" alt="Demo 1:1">
         <img src="assets/demo_evc_3x4.gif" alt="Demo 3:4">
@@ -277,12 +407,67 @@
     </div>
     <div class="example">
       <h3>Você Chegou</h3>
-      <img src="assets/cover_voce_chegou.jpg" alt="Capa Você Chegou" width="180">
+      <img class="capa" src="assets/cover_voce_chegou.jpg" alt="Capa Você Chegou" width="180">
       <div class="gifs">
         <img src="assets/demo_upc_1x1.gif" alt="Demo 1:1">
         <img src="assets/demo_upc_3x4.gif" alt="Demo 3:4">
       </div>
       <sub>Capa JPEG → 1:1 (3840²) e 3:4 (2048×2732) · Loop 12s · H.264 80 Mbps</sub>
+    </div>
+  </div>
+</section>
+
+<!-- Recursos -->
+<section>
+  <div class="sec-head">
+    <span class="label">Recursos</span>
+    <h2>O que o projeto oferece</h2>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <span class="num">🎨</span>
+      <h3>Entrada flexível</h3>
+      <p>PNG/JPG/TIFF quadrados (2048, 3000, 4K) e PSD em camadas. Recorte automático de pessoa com IA.</p>
+    </div>
+    <div class="card">
+      <span class="num">🧩</span>
+      <h3>Motor de composição</h3>
+      <p>Camadas image/text/generator/lock/adjust, keyframes e expressões em loop fechado, blend modes.</p>
+    </div>
+    <div class="card">
+      <span class="num">🪄</span>
+      <h3>Catálogo + plugins</h3>
+      <p>8 efeitos de camada + 11 geradores. Crie efeitos novos em Python com <code>new-effect</code>.</p>
+    </div>
+    <div class="card">
+      <span class="num">🛡️</span>
+      <h3>Check automático</h3>
+      <p>Reprova frame 0 ≠ capa, salto no loop, flash/strobe, brilho estourado.</p>
+    </div>
+    <div class="card">
+      <span class="num">✅</span>
+      <h3>Validador técnico</h3>
+      <p>Resolução, SAR 1:1, 45–100 Mbps, duração, mudo, Rec.709, frame rate, flash, loop.</p>
+    </div>
+    <div class="card">
+      <span class="num">🧹</span>
+      <h3>Selo explícito</h3>
+      <p>Detecta e remove Parental Advisory (Apple não permite na arte de motion).</p>
+    </div>
+    <div class="card">
+      <span class="num">📐</span>
+      <h3>3:4 com Safe Area</h3>
+      <p>Arte de ponta a ponta; só topo/base são estendidos. Itens-chave na Safe Area.</p>
+    </div>
+    <div class="card">
+      <span class="num">🩺</span>
+      <h3>Doctor</h3>
+      <p>Diagnóstico de ambiente, autoteste e estimativa de tempo de render.</p>
+    </div>
+    <div class="card">
+      <span class="num">🤖</span>
+      <h3>Skill + agente</h3>
+      <p>Diretor criativo para Claude / Copilot: pergunta, monta, mostra preview, itera, valida.</p>
     </div>
   </div>
 </section>
