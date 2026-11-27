@@ -195,8 +195,6 @@ Testado em **Linux**. Windows, macOS e Docker preparados (CI matrix). `studio.py
 <sub>Monkey In Space</sub>
 <br>
 <a href="https://github.com/uaigoiano-max"><img src="https://img.shields.io/badge/GitHub-uaigoiano--max-181717?style=flat-square&logo=github" alt="GitHub"></a>
-<br>
-<a href="https://www.instagram.com/zanonmusic/"><img src="https://img.shields.io/badge/Instagram-@zanonmusic-E4405F?style=flat-square&logo=instagram&logoColor=white" alt="Instagram"></a>
 </td>
 <td align="center" width="33%">
 <b>Licença</b>
