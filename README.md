@@ -12,6 +12,8 @@
 ![Python](https://img.shields.io/badge/python-3.9%2B-3776AB?logo=python&logoColor=white)
 ![FFmpeg](https://img.shields.io/badge/ffmpeg-required-007808?logo=ffmpeg&logoColor=white)
 ![Stars](https://img.shields.io/github/stars/monkeyinspace-tech/apple-music-album-motion-art?style=social)
+[![Download .skill](https://img.shields.io/badge/download-.skill-ff4fa3?logo=github)](https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases/latest)
+[![Download Release](https://img.shields.io/badge/download-release-blue?logo=github)](https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases/latest)
 
 [🇧🇷 Português](README.md) · [🇺🇸 English](README.en.md)
 
