@@ -41,35 +41,65 @@
   .hero {
     min-height: 100vh;
     display: grid;
-    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr 1fr;
     position: relative;
     overflow: hidden;
     background: var(--night);
   }
-  .hero::before {
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 6vw;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1D8A4E 0%, #1E3A8A 50%, #E8763A 100%);
+  }
+  .hero-right::before {
     content: "";
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 10% 20%, rgba(29,138,78,0.18) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 80% at 90% 80%, rgba(243,193,46,0.15) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 50% at 50% 50%, rgba(232,118,58,0.06) 0%, transparent 70%);
-    pointer-events: none;
+    background: repeating-linear-gradient(45deg, transparent 0 40px, rgba(0,0,0,0.1) 40px 42px);
+  }
+  .hero-right-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    z-index: 2;
+  }
+  .hero-right-content h2 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .hero-right-content p {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
   }
   .hero-noise {
     position: absolute;
     inset: 0;
-    opacity: 0.03;
+    opacity: 0.04;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     pointer-events: none;
-  }
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 8vw;
-    position: relative;
-    z-index: 2;
+    z-index: 1;
   }
   .hero-label {
     font-family: var(--mono);
@@ -91,20 +121,19 @@
   .hero h1 {
     font-family: var(--display);
     font-weight: 900;
-    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-size: clamp(3rem, 7vw, 6.5rem);
     line-height: 0.85;
     letter-spacing: -0.04em;
     text-transform: uppercase;
-    margin-bottom: 32px;
-    max-width: 1000px;
+    margin-bottom: 24px;
   }
-  .hero h1 .accent { color: var(--ouro); }
-  .hero h1 .accent2 { color: var(--mata); }
+  .hero h1 .line-2 { color: var(--ouro); }
+  .hero h1 .line-3 { color: var(--mata); }
   .hero-sub {
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
-    max-width: 55ch;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    max-width: 45ch;
     color: var(--ash);
-    margin-bottom: 48px;
+    margin-bottom: 40px;
     line-height: 1.6;
   }
   .hero-cta {
@@ -151,7 +180,8 @@
   }
   .btn-ghost:hover { border-color: var(--bone); }
   .hero-footer {
-    padding: 24px 8vw;
+    grid-column: 1 / -1;
+    padding: 20px 8vw;
     border-top: 1px solid #23231f;
     display: flex;
     justify-content: space-between;
@@ -160,8 +190,6 @@
     font-size: 11px;
     color: var(--ash);
     letter-spacing: 0.08em;
-    position: relative;
-    z-index: 2;
     flex-wrap: wrap;
     gap: 12px;
   }
@@ -567,6 +595,8 @@
   .footer-bottom a { color: var(--ouro); }
 
   @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 300px; }
     .motion-art-grid { grid-template-columns: 1fr; }
     .how-grid { grid-template-columns: 1fr; }
     .examples-grid { grid-template-columns: 1fr; }
@@ -586,12 +616,12 @@
 <!-- ── Hero ── -->
 <header class="hero">
   <div class="hero-noise"></div>
-  <div class="hero-content">
+  <div class="hero-left">
     <div class="hero-label">Apple Music Album Motion Art</div>
     <h1>
       Capa estática<br>
-      <span class="accent">vira vídeo</span><br>
-      <span class="accent2">animado.</span>
+      <span class="line-2">vira vídeo</span><br>
+      <span class="line-3">animado.</span>
     </h1>
     <p class="hero-sub">
       Transforme a capa do seu lançamento em Apple Music Album Motion Art — com camadas, keyframes, efeitos e validação automática. Sem After Effects. Sem motion designer.
@@ -602,9 +632,17 @@
       <a class="btn btn-ghost" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/README.md">README</a>
     </div>
   </div>
+  <div class="hero-right">
+    <div class="hero-noise"></div>
+    <div class="hero-right-content">
+      <h2>Motion Art</h2>
+      <p>1:1 · 3840² · 3:4 · 2048×2732</p>
+      <p style="margin-top: 8px;">H.264 · 45–100 Mbps · SAR 1:1</p>
+    </div>
+  </div>
   <div class="hero-footer">
     <span>Monkey In Space Music Group</span>
-    <span><a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases">v2.12.0</a> · MIT License</span>
+    <span><a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases">v2.13.0</a> · MIT License</span>
   </div>
 </header>
 
