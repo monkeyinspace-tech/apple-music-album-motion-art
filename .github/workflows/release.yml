@@ -8,6 +8,8 @@ jobs:
   build-skill:
     name: Build & publish .skill
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -21,8 +23,10 @@ jobs:
           path: dist/apple-motion-art.skill
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
+        continue-on-error: true
         with:
           files: dist/apple-motion-art.skill
           body: "Release automatica do Apple Music Album Motion Art."
+          overwrite_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
