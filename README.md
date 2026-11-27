@@ -219,6 +219,6 @@ Testado em **Linux**. Windows, macOS e Docker preparados (CI matrix). `studio.py
 
 <br>
 
-<sub>Feito com 🐒 por <b>Monkey In Space Music Group</b> · em colaboração com artistas, gravadoras e parceiros · Apple Music é marca da Apple Inc.; este projeto não é afiliado nem endossado pela Apple.</sub>
+<sub>Feito com 🐒 por <b>Monkey In Space Music Group</b> · Todos os direitos reservados.</sub>
 
 </div>
