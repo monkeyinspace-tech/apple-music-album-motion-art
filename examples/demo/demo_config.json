@@ -1,0 +1,20 @@
+{
+  "_comment": "Config da capa de demonstração (ORBIT / DEMO COVER). Sem sujeito => não precisa de IA (rembg).",
+  "key_content_y": [90, 1340],
+  "impact": [900, 1300],
+  "subject": {"enabled": false},
+  "title": {"box": [80, 90, 1620, 930], "texture_thr": 50},
+  "hot_cracks": {"roi": [200, 900, 1400, 1750]},
+  "flow_protect": [{"center": [560, 1380], "axes": [520, 520]}],
+  "light_leaks": true,
+  "rings": true,
+  "shards": 22,
+  "embers": 110,
+  "sparkles": [
+    {"box": [100, 120, 1600, 900], "count": 8},
+    {"box": [1100, 900, 1900, 1700], "count": 4}
+  ],
+  "leak_colors": [[200, 70, 255], [60, 120, 255]],
+  "lock_boxes": [],
+  "seed": 8
+}

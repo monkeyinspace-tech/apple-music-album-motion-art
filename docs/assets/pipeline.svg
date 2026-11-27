@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img" aria-label="Fluxo do Album Motion Studio">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a78bba"/></marker>
+    <style>
+      .b{fill:#1a1027;stroke:#7a4aa0;stroke-width:2;rx:14}
+      .h{font:700 19px Inter,Segoe UI,Helvetica,Arial,sans-serif;fill:#fff}
+      .s{font:14px Inter,Segoe UI,Helvetica,Arial,sans-serif;fill:#d9c4e8}
+    </style>
+  </defs>
+  <rect width="1280" height="360" fill="#0f0a18" rx="18"/>
+  <rect class="b" x="24"  y="80" width="190" height="150"/><text class="h" x="119" y="116" text-anchor="middle">1. Entrada</text><text class="s" x="119" y="144" text-anchor="middle">PNG · JPG · TIFF</text><text class="s" x="119" y="164" text-anchor="middle">2048 · 3000 · 4K</text><text class="s" x="119" y="190" text-anchor="middle">ou PSD em camadas</text>
+  <rect class="b" x="262" y="80" width="190" height="150"/><text class="h" x="357" y="116" text-anchor="middle">2. Projeto</text><text class="s" x="357" y="144" text-anchor="middle">scene.json + assets/</text><text class="s" x="357" y="164" text-anchor="middle">camadas · keyframes</text><text class="s" x="357" y="190" text-anchor="middle">studio.py init</text>
+  <rect class="b" x="500" y="50" width="270" height="210" style="stroke:#ff4fa3"/><text class="h" x="635" y="86" text-anchor="middle">3. Editar + Preview</text>
+  <text class="s" x="635" y="116" text-anchor="middle">add-layer · add-effect · set</text><text class="s" x="635" y="138" text-anchor="middle">catálogo de efeitos</text><text class="s" x="635" y="160" text-anchor="middle">plugins (new-effect)</text><text class="s" x="635" y="188" text-anchor="middle">preview: folha · frame · GIF</text><text class="s" x="635" y="214" text-anchor="middle">↻ itera com o usuário</text><text class="s" x="635" y="240" text-anchor="middle">pergunta · mostra · ajusta</text>
+  <rect class="b" x="818" y="80" width="170" height="150"/><text class="h" x="903" y="116" text-anchor="middle">4. Check</text><text class="s" x="903" y="144" text-anchor="middle">frame 0 = capa</text><text class="s" x="903" y="164" text-anchor="middle">loop · flash · brilho</text><text class="s" x="903" y="190" text-anchor="middle">studio.py check</text>
+  <rect class="b" x="1036" y="80" width="220" height="150"/><text class="h" x="1146" y="116" text-anchor="middle">5. Render + Validar</text><text class="s" x="1146" y="144" text-anchor="middle">[UPC]_1x1.mov · 3840²</text><text class="s" x="1146" y="164" text-anchor="middle">[UPC]_3x4.mov · 2048×2732</text><text class="s" x="1146" y="190" text-anchor="middle">validate_motion.py</text>
+  <g stroke="#a78bba" stroke-width="3" marker-end="url(#a)">
+    <line x1="216" y1="155" x2="258" y2="155"/><line x1="454" y1="155" x2="496" y2="155"/><line x1="772" y1="155" x2="814" y2="155"/><line x1="990" y1="155" x2="1032" y2="155"/>
+  </g>
+  <text class="s" x="640" y="320" text-anchor="middle">Todo efeito nasce e morre em zero ⇒ frame 0 = capa · loop sem salto · coordenadas sempre em 2048×2048</text>
+</svg>

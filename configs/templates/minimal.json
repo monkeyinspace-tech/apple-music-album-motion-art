@@ -1,0 +1,16 @@
+{
+  "_template": "minimal",
+  "_for": "Ponto de partida mínimo: só fluxo de fundo + vazamentos de luz. Copie e vá ligando recursos.",
+  "key_content_y": [150, 1400],
+  "impact": null,
+  "subject": {"enabled": false},
+  "title": null,
+  "hot_cracks": null,
+  "flow_protect": [],
+  "light_leaks": true,
+  "rings": false,
+  "shards": 0,
+  "embers": 0,
+  "sparkles": [],
+  "lock_boxes": []
+}

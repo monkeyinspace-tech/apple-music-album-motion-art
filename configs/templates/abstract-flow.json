@@ -1,0 +1,20 @@
+{
+  "_template": "abstract-flow",
+  "_for": "Arte abstrata/eletrônica/ilustração sem sujeito nem lettering: fluxo orgânico, vazamentos de luz e brilhos. Funciona com qualquer capa como ponto de partida seguro.",
+  "_how_to_adapt": "Se houver elementos que não podem deformar (logo, rosto ilustrado, planeta), adicione-os em flow_protect (elipses) e lock_boxes (caixas restauradas em todo frame).",
+  "key_content_y": [150, 1400],
+  "impact": null,
+  "subject": {"enabled": false},
+  "title": null,
+  "hot_cracks": null,
+  "flow_protect": [],
+  "light_leaks": true,
+  "rings": false,
+  "shards": 0,
+  "embers": 0,
+  "sparkles": [
+    {"box": [200, 200, 1850, 1500], "count": 10}
+  ],
+  "lock_boxes": [],
+  "seed": 3
+}

@@ -1,0 +1,12 @@
+.git
+.github
+work
+out
+dist
+**/.cache
+**/__pycache__
+.pytest_cache
+*.mov
+*.mp4
+*.psd
+private

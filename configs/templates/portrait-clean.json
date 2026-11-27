@@ -1,0 +1,33 @@
+{
+  "_template": "portrait-clean",
+  "_for": "Retratos/fotos limpas (pop, R&B, indie): pessoa em primeiro plano, sem lettering em papel. Movimento discreto e elegante.",
+  "_how_to_adapt": "O recorte é AUTOMÁTICO (subject.auto): a caixa, o pivô e a faixa da Safe Area saem da máscara da pessoa. Ajuste só a intensidade do movimento (sway_deg, float_px, shift_px) e as caixas de sparkles. Use --intensity subtle para um resultado mais discreto.",
+  "impact": null,
+  "subject": {
+    "enabled": true,
+    "auto": true,
+    "sway_deg": 0.9,
+    "float_px": 8,
+    "shift_px": 6
+  },
+  "title": null,
+  "hot_cracks": null,
+  "flow_protect": [],
+  "light_leaks": true,
+  "rings": false,
+  "shards": 0,
+  "embers": 0,
+  "sparkles": [
+    {
+      "box": [
+        300,
+        200,
+        1750,
+        1000
+      ],
+      "count": 6
+    }
+  ],
+  "lock_boxes": [],
+  "seed": 5
+}

@@ -1,0 +1,31 @@
+# ambientes
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# saídas e cache (podem ter GBs)
+out/
+work/
+dist/
+**/.cache/
+*.mov
+*.mp4
+!examples/**/*.gif
+
+# modelos de IA
+.u2net/
+
+# sistema
+.DS_Store
+Thumbs.db
+
+# ---- ARTE PRIVADA: nunca versionar capas/PSDs de lançamentos (tests/test_repo_privacy.py também barra) ----
+*.psd
+*.psb
+*.tif
+*.tiff
+private/
+privado/
+**/private/
+examples/private/

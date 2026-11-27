@@ -1,0 +1,20 @@
+{
+  "_template": "typographic-poster",
+  "_for": "Capas dominadas por tipografia/lettering (sem pessoa): título 'respirando' com brilho varrendo as letras e fumaça de fundo.",
+  "_how_to_adapt": "Ajuste title.box para cobrir todo o lettering (um pouco além das letras). Se as letras forem finas/claras sobre fundo escuro, reduza texture_thr (ex.: 35). Se o título pegar o fundo, aumente (ex.: 80).",
+  "key_content_y": [250, 1500],
+  "impact": null,
+  "subject": {"enabled": false},
+  "title": {"box": [100, 300, 1950, 1700], "texture_thr": 45},
+  "hot_cracks": null,
+  "flow_protect": [],
+  "light_leaks": true,
+  "rings": false,
+  "shards": 0,
+  "embers": 0,
+  "sparkles": [
+    {"box": [150, 350, 1900, 1650], "count": 8}
+  ],
+  "lock_boxes": [],
+  "seed": 21
+}
