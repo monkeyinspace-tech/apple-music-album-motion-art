@@ -4,44 +4,412 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Apple Music Album Motion Art — Documentação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  body { font-family: system-ui, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.6; }
-  h1 { color: #0B0B0A; }
-  a { color: #1D8A4E; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  ul { list-style: none; padding: 0; }
-  li { margin: 8px 0; }
-  .badge { display: inline-block; background: #ECECEA; padding: 4px 8px; border-radius: 4px; font-size: 0.85em; margin-right: 8px; }
+  :root {
+    --paper: #ECECEA;
+    --ink: #0B0B0A;
+    --night: #0B0B0A;
+    --coal: #161614;
+    --ash: #8D8C86;
+    --bone: #F2F1EC;
+    --mata: #1D8A4E;
+    --ouro: #F3C12E;
+    --anil: #1E3A8A;
+    --laranja: #E8763A;
+    --display: "Unbounded", system-ui, sans-serif;
+    --body: "Manrope", system-ui, sans-serif;
+    --mono: "Space Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--night);
+    color: var(--bone);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--ouro); outline-offset: 3px; }
+
+  /* Hero */
+  .hero {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 60px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent 0 22px, rgba(29,138,78,.07) 22px 24px);
+    pointer-events: none;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .hero p {
+    font-size: 1.15rem;
+    max-width: 60ch;
+    margin: 0 auto 24px;
+    color: #33332f;
+    position: relative;
+  }
+  .hero .btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid currentColor;
+    transition: transform .15s, background .2s, color .2s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.solid { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn.outline { color: var(--ink); border-color: var(--ink); }
+  .btn.outline:hover { background: var(--ink); color: var(--paper); }
+
+  /* Container */
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+  /* Section */
+  section { padding: 60px 0; }
+  .sec-head { margin-bottom: 32px; }
+  .sec-head .label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .sec-head h2 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  /* Cards grid */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--coal);
+    border: 1px solid #23231f;
+    padding: 24px;
+    transition: transform .2s, border-color .2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--ouro);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: #3a3a34; }
+  .card:hover::before { transform: scaleX(1); }
+  .card h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: var(--bone);
+  }
+  .card p { font-size: 0.9rem; color: var(--ash); margin: 0; }
+  .card .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ouro);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  /* Examples */
+  .examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .example {
+    background: var(--coal);
+    border: 2px solid #23231f;
+    padding: 20px;
+    text-align: center;
+  }
+  .example img { max-width: 100%; height: auto; margin: 8px 0; }
+  .example h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: var(--bone);
+  }
+  .example .gifs {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .example .gifs img { width: 48%; max-width: 200px; }
+  .example sub { color: var(--ash); font-size: 0.8rem; }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid #23231f;
+    padding: 40px 0;
+    text-align: center;
+  }
+  footer .logo { font-family: var(--display); font-weight: 900; font-size: 1.2rem; color: var(--bone); margin-bottom: 8px; }
+  footer small { color: var(--ash); font-family: var(--mono); font-size: 11px; letter-spacing: .08em; }
+  footer a { color: var(--ouro); }
+
+  /* Ticker */
+  .ticker {
+    background: var(--ouro);
+    color: var(--ink);
+    overflow: hidden;
+    border-block: 2px solid var(--ink);
+    padding: 12px 0;
+  }
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: roll 30s linear infinite;
+  }
+  .ticker span {
+    font-family: var(--display);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    padding: 0 24px;
+    white-space: nowrap;
+  }
+  .ticker i { font-style: normal; color: var(--mata); margin: 0 12px; }
+  @keyframes roll { to { transform: translateX(-50%); } }
+
+  @media (max-width: 600px) {
+    .cards { grid-template-columns: 1fr; }
+    .examples { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
 </style>
 </head>
 <body>
-<h1>🎬 Apple Music Album Motion Art</h1>
-<p>Documentação do projeto. <a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art">Ver no GitHub</a></p>
-<h2>Documentos</h2>
-<ul>
-  <li><a href="01-instalacao.md">01 — Instalação</a></li>
-  <li><a href="02-guia-rapido.md">02 — Guia rápido</a></li>
-  <li><a href="05-especificacoes-apple.md">05 — Especificações Apple</a></li>
-  <li><a href="06-validacao-e-troubleshooting.md">06 — Validação e troubleshooting</a></li>
-  <li><a href="07-skill-e-agente.md">07 — Skill e agente</a></li>
-  <li><a href="08-faq.md">08 — FAQ</a></li>
-  <li><a href="09-direitos-e-explicito.md">09 — Direitos e explícito</a></li>
-  <li><a href="10-motion-studio.md">10 — Motion Studio</a></li>
-  <li><a href="11-formato-da-cena.md">11 — Formato da cena</a></li>
-  <li><a href="12-catalogo-de-efeitos.md">12 — Catálogo de efeitos</a></li>
-  <li><a href="13-photoshop-psd.md">13 — Photoshop / PSD</a></li>
-  <li><a href="14-criar-efeitos.md">14 — Criar efeitos</a></li>
-  <li><a href="15-diretor-criativo.md">15 — Diretor criativo</a></li>
-  <li><a href="16-desempenho.md">16 — Desempenho</a></li>
-  <li><a href="17-compatibilidade.md">17 — Compatibilidade</a></li>
-  <li><a href="18-privacidade-e-testes.md">18 — Privacidade e testes</a></li>
-  <li><a href="github-setup.md">GitHub Setup</a></li>
-</ul>
-<h2>Links</h2>
-<ul>
-  <li><a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art">Repositório</a></li>
-  <li><a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases">Releases</a></li>
-  <li><a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/README.md">README</a></li>
-</ul>
+
+<!-- Hero -->
+<header class="hero">
+  <h1>Apple Music Album Motion Art</h1>
+  <p>Transforme a capa do seu lançamento em vídeo animado para a Apple Music — sem After Effects, sem motion designer.</p>
+  <div class="btns">
+    <a class="btn solid" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases/latest">⬇ Download</a>
+    <a class="btn outline" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art">GitHub</a>
+    <a class="btn outline" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/README.md">README</a>
+  </div>
+</header>
+
+<!-- Ticker -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>1 capa → 2 vídeos prontos<i>✦</i>Frame 0 = capa<i>✦</i>Loop sem salto<i>✦</i>H.264 45–100 Mbps<i>✦</i>SAR 1:1<i>✦</i>Validação automática<i>✦</i>1 capa → 2 vídeos prontos<i>✦</i>Frame 0 = capa<i>✦</i>Loop sem salto<i>✦</i>H.264 45–100 Mbps<i>✦</i>SAR 1:1<i>✦</i>Validação automática<i>✦</i></span>
+    <span>1 capa → 2 vídeos prontos<i>✦</i>Frame 0 = capa<i>✦</i>Loop sem salto<i>✦</i>H.264 45–100 Mbps<i>✦</i>SAR 1:1<i>✦</i>Validação automática<i>✦</i>1 capa → 2 vídeos prontos<i>✦</i>Frame 0 = capa<i>✦</i>Loop sem salto<i>✦</i>H.264 45–100 Mbps<i>✦</i>SAR 1:1<i>✦</i>Validação automática<i>✦</i></span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- Exemplos reais -->
+<section>
+  <div class="sec-head">
+    <span class="label">Resultados reais</span>
+    <h2>Exemplos</h2>
+  </div>
+  <div class="examples">
+    <div class="example">
+      <h3>EKANTA — EU VOU CANTAR</h3>
+      <img src="assets/cover_ekanta.png" alt="Capa EKANTA" width="180">
+      <div class="gifs">
+        <img src="assets/demo_evc_1x1.gif" alt="Demo 1:1">
+        <img src="assets/demo_evc_3x4.gif" alt="Demo 3:4">
+      </div>
+      <sub>Capa 3000×3000 → 1:1 (3840²) e 3:4 (2048×2732) · Loop 12s · H.264 80 Mbps</sub>
+    </div>
+    <div class="example">
+      <h3>Você Chegou</h3>
+      <img src="assets/cover_voce_chegou.jpg" alt="Capa Você Chegou" width="180">
+      <div class="gifs">
+        <img src="assets/demo_upc_1x1.gif" alt="Demo 1:1">
+        <img src="assets/demo_upc_3x4.gif" alt="Demo 3:4">
+      </div>
+      <sub>Capa JPEG → 1:1 (3840²) e 3:4 (2048×2732) · Loop 12s · H.264 80 Mbps</sub>
+    </div>
+  </div>
+</section>
+
+<!-- Documentação -->
+<section>
+  <div class="sec-head">
+    <span class="label">Documentação</span>
+    <h2>Guias</h2>
+  </div>
+  <div class="cards">
+    <a class="card" href="01-instalacao.md">
+      <span class="num">01</span>
+      <h3>Instalação</h3>
+      <p>Requisitos, one-click, manual, Docker, Windows/macOS.</p>
+    </a>
+    <a class="card" href="02-guia-rapido.md">
+      <span class="num">02</span>
+      <h3>Guia rápido</h3>
+      <p>Primeiros passos em 5 minutos.</p>
+    </a>
+    <a class="card" href="05-especificacoes-apple.md">
+      <span class="num">05</span>
+      <h3>Specs Apple</h3>
+      <p>Regras oficiais, bitrate, SAR, duração, flash.</p>
+    </a>
+    <a class="card" href="06-validacao-e-troubleshooting.md">
+      <span class="num">06</span>
+      <h3>Troubleshooting</h3>
+      <p>Problemas comuns e soluções.</p>
+    </a>
+    <a class="card" href="07-skill-e-agente.md">
+      <span class="num">07</span>
+      <h3>Skill e agente</h3>
+      <p>Claude / Copilot como diretor de motion.</p>
+    </a>
+    <a class="card" href="08-faq.md">
+      <span class="num">08</span>
+      <h3>FAQ</h3>
+      <p>Perguntas frequentes.</p>
+    </a>
+    <a class="card" href="10-motion-studio.md">
+      <span class="num">10</span>
+      <h3>Motion Studio</h3>
+      <p>Editor de motion: camadas, keyframes, efeitos.</p>
+    </a>
+    <a class="card" href="11-formato-da-cena.md">
+      <span class="num">11</span>
+      <h3>Formato da cena</h3>
+      <p>scene.json: estrutura e validação.</p>
+    </a>
+    <a class="card" href="12-catalogo-de-efeitos.md">
+      <span class="num">12</span>
+      <h3>Catálogo de efeitos</h3>
+      <p>8 efeitos de camada + 11 geradores.</p>
+    </a>
+    <a class="card" href="13-photoshop-psd.md">
+      <span class="num">13</span>
+      <h3>Photoshop / PSD</h3>
+      <p>Importação de PSD em camadas.</p>
+    </a>
+    <a class="card" href="14-criar-efeitos.md">
+      <span class="num">14</span>
+      <h3>Criar efeitos</h3>
+      <p>Plugins em Python.</p>
+    </a>
+    <a class="card" href="15-diretor-criativo.md">
+      <span class="num">15</span>
+      <h3>Diretor criativo</h3>
+      <p>Perguntas e ideias para animação.</p>
+    </a>
+    <a class="card" href="16-desempenho.md">
+      <span class="num">16</span>
+      <h3>Desempenho</h3>
+      <p>Tempo de render e otimização.</p>
+    </a>
+    <a class="card" href="17-compatibilidade.md">
+      <span class="num">17</span>
+      <h3>Compatibilidade</h3>
+      <p>Windows, macOS, Docker.</p>
+    </a>
+    <a class="card" href="18-privacidade-e-testes.md">
+      <span class="num">18</span>
+      <h3>Privacidade e testes</h3>
+      <p>Segurança e testes automatizados.</p>
+    </a>
+  </div>
+</section>
+
+<!-- Links -->
+<section>
+  <div class="sec-head">
+    <span class="label">Links</span>
+    <h2>Recursos</h2>
+  </div>
+  <div class="cards">
+    <a class="card" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art">
+      <span class="num">📦</span>
+      <h3>Repositório</h3>
+      <p>Código-fonte, issues, PRs.</p>
+    </a>
+    <a class="card" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases">
+      <span class="num">⬇️</span>
+      <h3>Releases</h3>
+      <p>Download do .skill e versões.</p>
+    </a>
+    <a class="card" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/README.md">
+      <span class="num">📖</span>
+      <h3>README</h3>
+      <p>Guia completo de uso.</p>
+    </a>
+    <a class="card" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/CONTRIBUTING.md">
+      <span class="num">🤝</span>
+      <h3>Contribuir</h3>
+      <p>Como contribuir com o projeto.</p>
+    </a>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="logo">Monkey In Space Music Group</div>
+  <small>Feito com 🐒 por <b>Monkey In Space Music Group</b> · em colaboração com artistas, gravadoras e parceiros · Apple Music é marca da Apple Inc.</small>
+  <br><br>
+  <small><a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art">GitHub</a> · <a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases">Releases</a> · <a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/README.md">README</a></small>
+</footer>
+
 </body>
 </html>
