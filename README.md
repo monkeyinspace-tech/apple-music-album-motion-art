@@ -78,8 +78,8 @@ flowchart LR
 <div align="center">
 <img src="docs/assets/cover_ekanta.png" alt="Capa EKANTA" width="300">
 <br>
-<img src="docs/assets/demo_upc_1x1.gif" alt="Demo 1:1" width="250"> &nbsp;
-<img src="docs/assets/demo_upc_3x4.gif" alt="Demo 3:4" width="250">
+<img src="docs/assets/demo_evc_1x1.gif" alt="Demo 1:1" width="250"> &nbsp;
+<img src="docs/assets/demo_evc_3x4.gif" alt="Demo 3:4" width="250">
 <br>
 <sub>Capa 3000×3000 → 1:1 (3840²) e 3:4 (2048×2732). Loop de 12 s, H.264 80 Mbps.</sub>
 </div>
@@ -89,8 +89,8 @@ flowchart LR
 <div align="center">
 <img src="docs/assets/cover_voce_chegou.jpg" alt="Capa Você Chegou" width="300">
 <br>
-<img src="docs/assets/demo_evc_1x1.gif" alt="Demo 1:1" width="250"> &nbsp;
-<img src="docs/assets/demo_evc_3x4.gif" alt="Demo 3:4" width="250">
+<img src="docs/assets/demo_upc_1x1.gif" alt="Demo 1:1" width="250"> &nbsp;
+<img src="docs/assets/demo_upc_3x4.gif" alt="Demo 3:4" width="250">
 <br>
 <sub>Capa JPEG → 1:1 (3840²) e 3:4 (2048×2732). Loop de 12 s, H.264 80 Mbps.</sub>
 </div>
