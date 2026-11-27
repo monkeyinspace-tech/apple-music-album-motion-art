@@ -6,7 +6,7 @@
 <title>Apple Music Album Motion Art — Documentação</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #ECECEA;
@@ -35,260 +35,511 @@
   }
   a { color: inherit; text-decoration: none; }
   :focus-visible { outline: 2px solid var(--ouro); outline-offset: 3px; }
-  img { max-width: 100%; height: auto; }
+  img { max-width: 100%; height: auto; display: block; }
 
-  /* Hero */
+  /* ── Hero ── */
   .hero {
-    background: var(--paper);
-    color: var(--ink);
-    padding: 60px 20px;
-    text-align: center;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
     position: relative;
     overflow: hidden;
+    background: var(--night);
   }
   .hero::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: repeating-linear-gradient(45deg, transparent 0 22px, rgba(29,138,78,.07) 22px 24px);
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 30%, rgba(29,138,78,0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 80% 70%, rgba(243,193,46,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(232,118,58,0.08) 0%, transparent 70%);
     pointer-events: none;
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 8vw;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mata);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-label::before {
+    content: "";
+    width: 40px;
+    height: 2px;
+    background: var(--mata);
   }
   .hero h1 {
     font-family: var(--display);
     font-weight: 900;
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    line-height: 1;
-    letter-spacing: -0.02em;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
     text-transform: uppercase;
-    margin-bottom: 12px;
-    position: relative;
+    margin-bottom: 24px;
+    max-width: 900px;
   }
-  .hero p {
-    font-size: 1.15rem;
-    max-width: 60ch;
-    margin: 0 auto 24px;
-    color: #33332f;
-    position: relative;
+  .hero h1 .line-2 { color: var(--ouro); }
+  .hero h1 .line-3 { color: var(--mata); }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    max-width: 50ch;
+    color: var(--ash);
+    margin-bottom: 40px;
+    line-height: 1.5;
   }
-  .hero .btns {
+  .hero-cta {
     display: flex;
-    gap: 12px;
-    justify-content: center;
+    gap: 16px;
     flex-wrap: wrap;
-    position: relative;
   }
   .btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 20px;
+    gap: 10px;
+    padding: 14px 24px;
     font-family: var(--mono);
     font-weight: 700;
-    font-size: 13px;
-    letter-spacing: .1em;
+    font-size: 12px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     text-decoration: none;
-    border: 2px solid currentColor;
-    transition: transform .15s, background .2s, color .2s;
+    border: 2px solid;
+    transition: transform 0.2s, background 0.2s, color 0.2s;
   }
-  .btn:hover { transform: translateY(-2px); }
-  .btn.solid { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-  .btn.outline { color: var(--ink); border-color: var(--ink); }
-  .btn.outline:hover { background: var(--ink); color: var(--paper); }
-
-  /* Container */
-  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
-  /* Section */
-  section { padding: 60px 0; }
-  .sec-head { margin-bottom: 32px; }
-  .sec-head .label {
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--ash);
-    margin-bottom: 8px;
-    display: block;
-  }
-  .sec-head h2 {
-    font-family: var(--display);
-    font-weight: 900;
-    font-size: clamp(1.6rem, 4vw, 2.8rem);
-    line-height: 1;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-    margin: 0;
-  }
-  .sec-head p {
-    margin-top: 12px;
-    color: var(--ash);
-    max-width: 70ch;
-  }
-
-  /* Cards grid */
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-  }
-  .card {
-    background: var(--coal);
-    border: 1px solid #23231f;
-    padding: 24px;
-    transition: transform .2s, border-color .2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
+  .btn:hover { transform: translateY(-3px); }
+  .btn-primary {
     background: var(--ouro);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform .3s;
+    color: var(--ink);
+    border-color: var(--ouro);
   }
-  .card:hover { transform: translateY(-4px); border-color: #3a3a34; }
-  .card:hover::before { transform: scaleX(1); }
-  .card h3 {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    margin-bottom: 8px;
+  .btn-primary:hover { background: var(--bone); border-color: var(--bone); }
+  .btn-ghost {
+    background: transparent;
     color: var(--bone);
+    border-color: var(--ash);
   }
-  .card p { font-size: 0.9rem; color: var(--ash); margin: 0; }
-  .card .num {
+  .btn-ghost:hover { border-color: var(--bone); }
+  .hero-footer {
+    padding: 24px 8vw;
+    border-top: 1px solid #23231f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-family: var(--mono);
     font-size: 11px;
-    color: var(--ouro);
-    margin-bottom: 8px;
-    display: block;
+    color: var(--ash);
+    letter-spacing: 0.08em;
+    position: relative;
+    z-index: 2;
   }
+  .hero-footer a { color: var(--ouro); }
 
-  /* Examples */
-  .examples {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-  }
-  .example {
-    background: var(--coal);
-    border: 2px solid #23231f;
-    padding: 20px;
-    text-align: center;
-  }
-  .example h3 {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    color: var(--bone);
-  }
-  .example .capa { margin: 8px auto; }
-  .example .gifs {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 8px 0;
-  }
-  .example .gifs img { width: 48%; max-width: 200px; }
-  .example sub { color: var(--ash); font-size: 0.8rem; display: block; margin-top: 8px; }
-
-  /* Info boxes */
-  .info-box {
-    background: var(--coal);
-    border-left: 4px solid var(--mata);
-    padding: 20px 24px;
-    margin: 24px 0;
-  }
-  .info-box h4 {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 1rem;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    color: var(--bone);
-  }
-  .info-box p { color: var(--ash); font-size: 0.95rem; margin: 0; }
-  .info-box ul { color: var(--ash); font-size: 0.95rem; margin: 8px 0 0 20px; }
-  .info-box li { margin: 4px 0; }
-
-  /* Steps */
-  .steps { counter-reset: step; }
-  .step {
-    display: flex;
-    gap: 16px;
-    margin: 16px 0;
-    align-items: flex-start;
-  }
-  .step-num {
-    font-family: var(--display);
-    font-weight: 900;
-    font-size: 2rem;
-    color: var(--ouro);
-    line-height: 1;
-    min-width: 40px;
-  }
-  .step-content h4 {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 1rem;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-    color: var(--bone);
-  }
-  .step-content p { color: var(--ash); font-size: 0.9rem; margin: 0; }
-  .step-content code {
-    background: #23231f;
-    padding: 2px 6px;
-    border-radius: 2px;
-    font-size: 0.85rem;
-    color: var(--ouro);
-  }
-
-  /* Ticker */
+  /* ── Ticker ── */
   .ticker {
     background: var(--ouro);
     color: var(--ink);
     overflow: hidden;
+    padding: 14px 0;
     border-block: 2px solid var(--ink);
-    padding: 12px 0;
   }
   .ticker-track {
     display: flex;
     width: max-content;
-    animation: roll 30s linear infinite;
+    animation: roll 25s linear infinite;
   }
   .ticker span {
     font-family: var(--display);
     font-weight: 900;
     text-transform: uppercase;
-    font-size: 1.1rem;
-    padding: 0 24px;
+    font-size: 1rem;
+    padding: 0 32px;
     white-space: nowrap;
   }
-  .ticker i { font-style: normal; color: var(--mata); margin: 0 12px; }
+  .ticker i { font-style: normal; color: var(--mata); margin: 0 16px; }
   @keyframes roll { to { transform: translateX(-50%); } }
 
-  /* Footer */
-  footer {
-    border-top: 1px solid #23231f;
-    padding: 40px 0;
-    text-align: center;
-  }
-  footer .logo { font-family: var(--display); font-weight: 900; font-size: 1.2rem; color: var(--bone); margin-bottom: 8px; }
-  footer small { color: var(--ash); font-family: var(--mono); font-size: 11px; letter-spacing: .08em; }
-  footer a { color: var(--ouro); }
+  /* ── Container ── */
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 8vw; }
 
+  /* ── Section base ── */
+  section { padding: 100px 0; position: relative; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mata);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--mata);
+  }
+  .section-title {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    max-width: 800px;
+  }
+  .section-desc {
+    color: var(--ash);
+    max-width: 60ch;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  /* ── What is Motion Art ── */
+  .motion-art {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 100px 8vw;
+  }
+  .motion-art .section-label { color: var(--mata); }
+  .motion-art .section-label::before { background: var(--mata); }
+  .motion-art .section-title { color: var(--ink); }
+  .motion-art .section-desc { color: #55544e; }
+  .motion-art-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 60px;
+    align-items: start;
+  }
+  .motion-art-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #33332f;
+  }
+  .motion-art-text p { margin-bottom: 20px; }
+  .motion-art-text strong { color: var(--ink); font-weight: 700; }
+  .specs-list {
+    list-style: none;
+    margin-top: 24px;
+  }
+  .specs-list li {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd7cc;
+    font-size: 0.95rem;
+  }
+  .specs-list li:last-child { border-bottom: none; }
+  .specs-list .spec-key {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mata);
+    min-width: 100px;
+    font-weight: 700;
+  }
+  .specs-list .spec-val { color: #33332f; }
+  .motion-art-visual {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: var(--coal);
+    border: 2px solid #23231f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .motion-art-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(243,193,46,0.1) 0%, transparent 70%);
+  }
+  .motion-art-visual span {
+    font-family: var(--display);
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--ouro);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    opacity: 0.8;
+  }
+  .motion-art-links {
+    margin-top: 24px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .motion-art-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--mata);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  /* ── How it works ── */
+  .how {
+    background: var(--night);
+    padding: 100px 8vw;
+  }
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 60px;
+    align-items: start;
+  }
+  .how-text {
+    color: var(--ash);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  .how-text p { margin-bottom: 20px; }
+  .how-text strong { color: var(--bone); font-weight: 700; }
+  .how-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .how-visual img {
+    width: 100%;
+    border: 1px solid #23231f;
+  }
+  .how-visual .caption {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ash);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── Examples ── */
+  .examples {
+    background: var(--coal);
+    padding: 100px 8vw;
+  }
+  .examples-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 60px;
+  }
+  .example-card {
+    background: var(--night);
+    border: 1px solid #23231f;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .example-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--ouro);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s;
+  }
+  .example-card:hover::before { transform: scaleY(1); }
+  .example-card h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: var(--bone);
+  }
+  .example-card .cover {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto 20px;
+    border: 1px solid #23231f;
+  }
+  .example-card .gifs {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 16px 0;
+  }
+  .example-card .gifs img {
+    width: 48%;
+    max-width: 180px;
+  }
+  .example-card .meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ash);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #23231f;
+  }
+
+  /* ── Resources ── */
+  .resources {
+    background: var(--night);
+    padding: 100px 8vw;
+  }
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px;
+    background: #23231f;
+    margin-top: 60px;
+    border: 1px solid #23231f;
+  }
+  .resource-item {
+    background: var(--night);
+    padding: 24px;
+    transition: background 0.2s;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .resource-item:hover { background: var(--coal); }
+  .resource-item .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ouro);
+    font-weight: 700;
+    min-width: 28px;
+    padding-top: 2px;
+  }
+  .resource-item h4 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    color: var(--bone);
+  }
+  .resource-item p {
+    font-size: 0.85rem;
+    color: var(--ash);
+    line-height: 1.5;
+  }
+
+  /* ── Quickstart ── */
+  .quickstart {
+    background: var(--coal);
+    padding: 100px 8vw;
+  }
+  .quickstart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 60px;
+    align-items: start;
+  }
+  .quickstart-code {
+    background: var(--night);
+    border: 1px solid #23231f;
+    padding: 24px;
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--bone);
+    overflow-x: auto;
+  }
+  .quickstart-code .comment { color: var(--ash); }
+  .quickstart-code .cmd { color: var(--ouro); }
+  .quickstart-text {
+    color: var(--ash);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  .quickstart-text p { margin-bottom: 16px; }
+  .quickstart-text strong { color: var(--bone); font-weight: 700; }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--night);
+    border-top: 1px solid #23231f;
+    padding: 60px 8vw;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: var(--bone);
+    margin-bottom: 12px;
+  }
+  .footer-brand span { color: var(--ouro); }
+  .footer-desc {
+    color: var(--ash);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 40ch;
+  }
+  .footer-col h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ouro);
+    margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin: 8px 0; }
+  .footer-col a {
+    color: var(--ash);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--bone); }
+  .footer-bottom {
+    border-top: 1px solid #23231f;
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ash);
+    letter-spacing: 0.06em;
+  }
+  .footer-bottom a { color: var(--ouro); }
+
+  @media (max-width: 900px) {
+    .motion-art-grid { grid-template-columns: 1fr; }
+    .how-grid { grid-template-columns: 1fr; }
+    .examples-grid { grid-template-columns: 1fr; }
+    .quickstart-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 600px) {
-    .cards { grid-template-columns: 1fr; }
-    .examples { grid-template-columns: 1fr; }
+    .resources-grid { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
@@ -297,18 +548,31 @@
 </head>
 <body>
 
-<!-- Hero -->
+<!-- ── Hero ── -->
 <header class="hero">
-  <h1>Apple Music Album Motion Art</h1>
-  <p>Transforme a capa do seu lançamento em vídeo animado para a Apple Music — sem After Effects, sem motion designer.</p>
-  <div class="btns">
-    <a class="btn solid" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases/latest">⬇ Download</a>
-    <a class="btn outline" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art">GitHub</a>
-    <a class="btn outline" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/README.md">README</a>
+  <div class="hero-content">
+    <div class="hero-label">Apple Music Album Motion Art</div>
+    <h1>
+      Capa estática<br>
+      <span class="line-2">vira vídeo</span><br>
+      <span class="line-3">animado.</span>
+    </h1>
+    <p class="hero-sub">
+      Transforme a capa do seu lançamento em Apple Music Album Motion Art — com camadas, keyframes, efeitos e validação automática. Sem After Effects. Sem motion designer.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases/latest">⬇ Download</a>
+      <a class="btn btn-ghost" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art">GitHub</a>
+      <a class="btn btn-ghost" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/README.md">README</a>
+    </div>
+  </div>
+  <div class="hero-footer">
+    <span>Monkey In Space Music Group</span>
+    <span><a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases">v2.11.0</a> · MIT License</span>
   </div>
 </header>
 
-<!-- Ticker -->
+<!-- ── Ticker ── -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <span>1 capa → 2 vídeos prontos<i>✦</i>Frame 0 = capa<i>✦</i>Loop sem salto<i>✦</i>H.264 45–100 Mbps<i>✦</i>SAR 1:1<i>✦</i>Validação automática<i>✦</i>1 capa → 2 vídeos prontos<i>✦</i>Frame 0 = capa<i>✦</i>Loop sem salto<i>✦</i>H.264 45–100 Mbps<i>✦</i>SAR 1:1<i>✦</i>Validação automática<i>✦</i></span>
@@ -316,284 +580,323 @@
   </div>
 </div>
 
-<div class="wrap">
-
-<!-- O que é Apple Music Motion Art -->
-<section>
-  <div class="sec-head">
-    <span class="label">Contexto</span>
-    <h2>O que é Apple Music Motion Art?</h2>
-  </div>
-  <div class="info-box">
-    <h4>Apple Music Album Motion Art</h4>
-    <p>A Apple Music permite que artistas e selos substituam a capa estática do álbum por um <strong>vídeo curto em loop</strong> que aparece na página do álbum, na busca e nas playlists. É uma forma de dar vida à arte do lançamento e destacar o trabalho na plataforma.</p>
-    <ul>
-      <li><strong>Formatos:</strong> 1:1 (3840×3840) e 3:4 (2048×2732)</li>
-      <li><strong>Codec:</strong> H.264 (45–100 Mbps) ou ProRes 422/4444</li>
-      <li><strong>Duração:</strong> 8–35 segundos (algumas distribuidoras exigem 15–35s)</li>
-      <li><strong>Requisitos:</strong> primeiro frame = capa estática, loop sem salto, mudo, Rec.709, SAR 1:1, sem selo Parental Advisory na arte</li>
-    </ul>
-  </div>
-  <p style="color: var(--ash); font-size: 0.9rem; margin-top: 12px;">
-    Fontes oficiais: <a href="https://help.apple.com/itc/musicstyleguide/en.lproj/itc7d4b161d8.html" style="color: var(--ouro);">Motion Album Artwork</a> · <a href="https://itunespartner.apple.com/music/support/5245-album-motion-art-delivery" style="color: var(--ouro);">Album Motion Art Delivery</a>
-  </p>
-</section>
-
-<!-- O que o projeto faz -->
-<section>
-  <div class="sec-head">
-    <span class="label">O projeto</span>
-    <h2>O que o Apple Music Album Motion Art faz</h2>
-  </div>
-  <div class="info-box" style="border-left-color: var(--ouro);">
-    <h4>Estúdio de motion completo</h4>
-    <p>Transforma uma capa (PNG/JPG/TIFF) ou um PSD em camadas em <strong>2 vídeos prontos para a Apple Music</strong> — com camadas, keyframes, efeitos, plugins e validação automática. Tudo roda localmente, sem After Effects, sem motion designer.</p>
-  </div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-content">
-        <h4>Prepare o material</h4>
-        <p>Capa plana (PNG/JPG/TIFF) ou PSD em camadas. Qualquer tamanho: 2048, 3000 ou 4K. Se não for quadrada, use <code>--fit crop</code> ou <code>--fit extend</code>.</p>
+<!-- ── O que é Apple Music Motion Art ── -->
+<section class="motion-art">
+  <div class="wrap">
+    <div class="section-label">Contexto</div>
+    <h2 class="section-title">O que é Apple Music Motion Art?</h2>
+    <p class="section-desc">A Apple Music permite que artistas e selos substituam a capa estática do álbum por um vídeo curto em loop que aparece na página do álbum, na busca e nas playlists.</p>
+    <div class="motion-art-grid">
+      <div class="motion-art-text">
+        <p>É uma forma de <strong>dar vida à arte do lançamento</strong> e destacar o trabalho na plataforma. O toolkit oficial da Apple traz templates de After Effects, mas <strong>não cria a animação</strong> — é preciso um motion designer ou uma ferramenta como esta.</p>
+        <p>Este projeto automatiza todo o processo: da capa ao vídeo validado, com camadas, keyframes, efeitos e checagem das regras da Apple.</p>
+        <div class="motion-art-links">
+          <a href="https://help.apple.com/itc/musicstyleguide/en.lproj/itc7d4b161d8.html">Motion Album Artwork →</a>
+          <a href="https://itunespartner.apple.com/music/support/5245-album-motion-art-delivery">Album Motion Art Delivery →</a>
+        </div>
       </div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-content">
-        <h4>Inicialize o projeto</h4>
-        <p><code>studio.py init capa.png work/proj --template punk-impact</code> — cria o projeto com camadas, efeitos e movimento inicial.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-content">
-        <h4>Edite e faça preview</h4>
-        <p>Adicione camadas, efeitos, keyframes. Veja o preview (folha de contato, GIF) e itere com o usuário.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-content">
-        <h4>Cheque e renderize</h4>
-        <p><code>studio.py check</code> valida frame 0, loop, flash e brilho. <code>studio.py render</code> gera os .mov (3:4 e 1:1).</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">5</div>
-      <div class="step-content">
-        <h4>Valide e entregue</h4>
-        <p><code>validate_motion.py</code> confirma resolução, SAR, bitrate, duração e codec. Tudo ✅ = pronto para a distribuidora.</p>
+      <div>
+        <ul class="specs-list">
+          <li><span class="spec-key">Formatos</span><span class="spec-val">1:1 (3840×3840) e 3:4 (2048×2732)</span></li>
+          <li><span class="spec-key">Codec</span><span class="spec-val">H.264 (45–100 Mbps) ou ProRes 422/4444</span></li>
+          <li><span class="spec-key">Duração</span><span class="spec-val">8–35 segundos (algumas distribuidoras exigem 15–35s)</span></li>
+          <li><span class="spec-key">Requisitos</span><span class="spec-val">Primeiro frame = capa estática, loop sem salto, mudo, Rec.709, SAR 1:1, sem selo Parental Advisory</span></li>
+          <li><span class="spec-key">Saída</span><span class="spec-val">2 vídeos: [UPC]_1x1.mov e [UPC]_3x4.mov</span></li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Exemplos reais -->
-<section>
-  <div class="sec-head">
-    <span class="label">Resultados reais</span>
-    <h2>Exemplos</h2>
-    <p>Capas reais de lançamentos animadas com o projeto. Cada uma gera 2 vídeos: 1:1 (3840×3840) e 3:4 (2048×2732).</p>
-  </div>
-  <div class="examples">
-    <div class="example">
-      <h3>EKANTA — EU VOU CANTAR</h3>
-      <img class="capa" src="assets/cover_ekanta.png" alt="Capa EKANTA" width="180">
-      <div class="gifs">
-        <img src="assets/demo_evc_1x1.gif" alt="Demo 1:1">
-        <img src="assets/demo_evc_3x4.gif" alt="Demo 3:4">
+<!-- ── Como funciona ── -->
+<section class="how">
+  <div class="wrap">
+    <div class="section-label">O projeto</div>
+    <h2 class="section-title">Como funciona</h2>
+    <p class="section-desc">De uma capa a dois vídeos validados, em 5 passos.</p>
+    <div class="how-grid">
+      <div class="how-text">
+        <p><strong>1. Prepare o material</strong> — Capa plana (PNG/JPG/TIFF) ou PSD em camadas. Qualquer tamanho: 2048, 3000 ou 4K. Se não for quadrada, use <code>--fit crop</code> ou <code>--fit extend</code>.</p>
+        <p><strong>2. Inicialize o projeto</strong> — <code>studio.py init capa.png work/proj --template punk-impact</code> cria o projeto com camadas, efeitos e movimento inicial.</p>
+        <p><strong>3. Edite e faça preview</strong> — Adicione camadas, efeitos, keyframes. Veja o preview (folha de contato, GIF) e itere.</p>
+        <p><strong>4. Cheque e renderize</strong> — <code>studio.py check</code> valida frame 0, loop, flash e brilho. <code>studio.py render</code> gera os .mov (3:4 e 1:1).</p>
+        <p><strong>5. Valide e entregue</strong> — <code>validate_motion.py</code> confirma resolução, SAR, bitrate, duração e codec. Tudo ✅ = pronto para a distribuidora.</p>
       </div>
-      <sub>Capa 3000×3000 → 1:1 (3840²) e 3:4 (2048×2732) · Loop 12s · H.264 80 Mbps</sub>
-    </div>
-    <div class="example">
-      <h3>Você Chegou</h3>
-      <img class="capa" src="assets/cover_voce_chegou.jpg" alt="Capa Você Chegou" width="180">
-      <div class="gifs">
-        <img src="assets/demo_upc_1x1.gif" alt="Demo 1:1">
-        <img src="assets/demo_upc_3x4.gif" alt="Demo 3:4">
+      <div class="how-visual">
+        <img src="assets/layers-explainer.png" alt="Camadas do motor">
+        <span class="caption">Camadas: imagem, texto, gerador, trava, ajuste</span>
+        <img src="assets/loop-timeline.png" alt="Loop timeline">
+        <span class="caption">Loop perfeito por construção — todo efeito nasce e morre em zero</span>
       </div>
-      <sub>Capa JPEG → 1:1 (3840²) e 3:4 (2048×2732) · Loop 12s · H.264 80 Mbps</sub>
     </div>
   </div>
 </section>
 
-<!-- Recursos -->
-<section>
-  <div class="sec-head">
-    <span class="label">Recursos</span>
-    <h2>O que o projeto oferece</h2>
-  </div>
-  <div class="cards">
-    <div class="card">
-      <span class="num">🎨</span>
-      <h3>Entrada flexível</h3>
-      <p>PNG/JPG/TIFF quadrados (2048, 3000, 4K) e PSD em camadas. Recorte automático de pessoa com IA.</p>
-    </div>
-    <div class="card">
-      <span class="num">🧩</span>
-      <h3>Motor de composição</h3>
-      <p>Camadas image/text/generator/lock/adjust, keyframes e expressões em loop fechado, blend modes.</p>
-    </div>
-    <div class="card">
-      <span class="num">🪄</span>
-      <h3>Catálogo + plugins</h3>
-      <p>8 efeitos de camada + 11 geradores. Crie efeitos novos em Python com <code>new-effect</code>.</p>
-    </div>
-    <div class="card">
-      <span class="num">🛡️</span>
-      <h3>Check automático</h3>
-      <p>Reprova frame 0 ≠ capa, salto no loop, flash/strobe, brilho estourado.</p>
-    </div>
-    <div class="card">
-      <span class="num">✅</span>
-      <h3>Validador técnico</h3>
-      <p>Resolução, SAR 1:1, 45–100 Mbps, duração, mudo, Rec.709, frame rate, flash, loop.</p>
-    </div>
-    <div class="card">
-      <span class="num">🧹</span>
-      <h3>Selo explícito</h3>
-      <p>Detecta e remove Parental Advisory (Apple não permite na arte de motion).</p>
-    </div>
-    <div class="card">
-      <span class="num">📐</span>
-      <h3>3:4 com Safe Area</h3>
-      <p>Arte de ponta a ponta; só topo/base são estendidos. Itens-chave na Safe Area.</p>
-    </div>
-    <div class="card">
-      <span class="num">🩺</span>
-      <h3>Doctor</h3>
-      <p>Diagnóstico de ambiente, autoteste e estimativa de tempo de render.</p>
-    </div>
-    <div class="card">
-      <span class="num">🤖</span>
-      <h3>Skill + agente</h3>
-      <p>Diretor criativo para Claude / Copilot: pergunta, monta, mostra preview, itera, valida.</p>
+<!-- ── Exemplos ── -->
+<section class="examples">
+  <div class="wrap">
+    <div class="section-label">Resultados reais</div>
+    <h2 class="section-title">Exemplos</h2>
+    <p class="section-desc">Capas reais de lançamentos animadas com o projeto. Cada uma gera 2 vídeos: 1:1 (3840×3840) e 3:4 (2048×2732).</p>
+    <div class="examples-grid">
+      <div class="example-card">
+        <h3>EKANTA — EU VOU CANTAR</h3>
+        <img class="cover" src="assets/cover_ekanta.png" alt="Capa EKANTA">
+        <div class="gifs">
+          <img src="assets/demo_evc_1x1.gif" alt="Demo 1:1">
+          <img src="assets/demo_evc_3x4.gif" alt="Demo 3:4">
+        </div>
+        <div class="meta">Capa 3000×3000 → 1:1 (3840²) e 3:4 (2048×2732) · Loop 12s · H.264 80 Mbps</div>
+      </div>
+      <div class="example-card">
+        <h3>Você Chegou</h3>
+        <img class="cover" src="assets/cover_voce_chegou.jpg" alt="Capa Você Chegou">
+        <div class="gifs">
+          <img src="assets/demo_upc_1x1.gif" alt="Demo 1:1">
+          <img src="assets/demo_upc_3x4.gif" alt="Demo 3:4">
+        </div>
+        <div class="meta">Capa JPEG → 1:1 (3840²) e 3:4 (2048×2732) · Loop 12s · H.264 80 Mbps</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Documentação -->
-<section>
-  <div class="sec-head">
-    <span class="label">Documentação</span>
-    <h2>Guias</h2>
-  </div>
-  <div class="cards">
-    <a class="card" href="01-instalacao.md">
-      <span class="num">01</span>
-      <h3>Instalação</h3>
-      <p>Requisitos, one-click, manual, Docker, Windows/macOS.</p>
-    </a>
-    <a class="card" href="02-guia-rapido.md">
-      <span class="num">02</span>
-      <h3>Guia rápido</h3>
-      <p>Primeiros passos em 5 minutos.</p>
-    </a>
-    <a class="card" href="05-especificacoes-apple.md">
-      <span class="num">05</span>
-      <h3>Specs Apple</h3>
-      <p>Regras oficiais, bitrate, SAR, duração, flash.</p>
-    </a>
-    <a class="card" href="06-validacao-e-troubleshooting.md">
-      <span class="num">06</span>
-      <h3>Troubleshooting</h3>
-      <p>Problemas comuns e soluções.</p>
-    </a>
-    <a class="card" href="07-skill-e-agente.md">
-      <span class="num">07</span>
-      <h3>Skill e agente</h3>
-      <p>Claude / Copilot como diretor de motion.</p>
-    </a>
-    <a class="card" href="08-faq.md">
-      <span class="num">08</span>
-      <h3>FAQ</h3>
-      <p>Perguntas frequentes.</p>
-    </a>
-    <a class="card" href="10-motion-studio.md">
-      <span class="num">10</span>
-      <h3>Motion Studio</h3>
-      <p>Editor de motion: camadas, keyframes, efeitos.</p>
-    </a>
-    <a class="card" href="11-formato-da-cena.md">
-      <span class="num">11</span>
-      <h3>Formato da cena</h3>
-      <p>scene.json: estrutura e validação.</p>
-    </a>
-    <a class="card" href="12-catalogo-de-efeitos.md">
-      <span class="num">12</span>
-      <h3>Catálogo de efeitos</h3>
-      <p>8 efeitos de camada + 11 geradores.</p>
-    </a>
-    <a class="card" href="13-photoshop-psd.md">
-      <span class="num">13</span>
-      <h3>Photoshop / PSD</h3>
-      <p>Importação de PSD em camadas.</p>
-    </a>
-    <a class="card" href="14-criar-efeitos.md">
-      <span class="num">14</span>
-      <h3>Criar efeitos</h3>
-      <p>Plugins em Python.</p>
-    </a>
-    <a class="card" href="15-diretor-criativo.md">
-      <span class="num">15</span>
-      <h3>Diretor criativo</h3>
-      <p>Perguntas e ideias para animação.</p>
-    </a>
-    <a class="card" href="16-desempenho.md">
-      <span class="num">16</span>
-      <h3>Desempenho</h3>
-      <p>Tempo de render e otimização.</p>
-    </a>
-    <a class="card" href="17-compatibilidade.md">
-      <span class="num">17</span>
-      <h3>Compatibilidade</h3>
-      <p>Windows, macOS, Docker.</p>
-    </a>
-    <a class="card" href="18-privacidade-e-testes.md">
-      <span class="num">18</span>
-      <h3>Privacidade e testes</h3>
-      <p>Segurança e testes automatizados.</p>
-    </a>
+<!-- ── Recursos ── -->
+<section class="resources">
+  <div class="wrap">
+    <div class="section-label">Recursos</div>
+    <h2 class="section-title">O que o projeto oferece</h2>
+    <div class="resources-grid">
+      <div class="resource-item">
+        <span class="num">🎨</span>
+        <div>
+          <h4>Entrada flexível</h4>
+          <p>PNG/JPG/TIFF quadrados (2048, 3000, 4K) e PSD em camadas. Recorte automático de pessoa com IA.</p>
+        </div>
+      </div>
+      <div class="resource-item">
+        <span class="num">🧩</span>
+        <div>
+          <h4>Motor de composição</h4>
+          <p>Camadas image/text/generator/lock/adjust, keyframes e expressões em loop fechado, blend modes.</p>
+        </div>
+      </div>
+      <div class="resource-item">
+        <span class="num">🪄</span>
+        <div>
+          <h4>Catálogo + plugins</h4>
+          <p>8 efeitos de camada + 11 geradores. Crie efeitos novos em Python com <code>new-effect</code>.</p>
+        </div>
+      </div>
+      <div class="resource-item">
+        <span class="num">🛡️</span>
+        <div>
+          <h4>Check automático</h4>
+          <p>Reprova frame 0 ≠ capa, salto no loop, flash/strobe, brilho estourado.</p>
+        </div>
+      </div>
+      <div class="resource-item">
+        <span class="num">✅</span>
+        <div>
+          <h4>Validador técnico</h4>
+          <p>Resolução, SAR 1:1, 45–100 Mbps, duração, mudo, Rec.709, frame rate, flash, loop.</p>
+        </div>
+      </div>
+      <div class="resource-item">
+        <span class="num">🧹</span>
+        <div>
+          <h4>Selo explícito</h4>
+          <p>Detecta e remove Parental Advisory (Apple não permite na arte de motion).</p>
+        </div>
+      </div>
+      <div class="resource-item">
+        <span class="num">📐</span>
+        <div>
+          <h4>3:4 com Safe Area</h4>
+          <p>Arte de ponta a ponta; só topo/base são estendidos. Itens-chave na Safe Area.</p>
+        </div>
+      </div>
+      <div class="resource-item">
+        <span class="num">🩺</span>
+        <div>
+          <h4>Doctor</h4>
+          <p>Diagnóstico de ambiente, autoteste e estimativa de tempo de render.</p>
+        </div>
+      </div>
+      <div class="resource-item">
+        <span class="num">🤖</span>
+        <div>
+          <h4>Skill + agente</h4>
+          <p>Diretor criativo para Claude / Copilot: pergunta, monta, mostra preview, itera, valida.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- Links -->
-<section>
-  <div class="sec-head">
-    <span class="label">Links</span>
-    <h2>Recursos</h2>
+<!-- ── Quickstart ── -->
+<section class="quickstart">
+  <div class="wrap">
+    <div class="section-label">Início rápido</div>
+    <h2 class="section-title">Comece em 5 passos</h2>
+    <div class="quickstart-grid">
+      <div class="quickstart-code">
+<span class="comment"># 1. Instale</span>
+<span class="cmd">bash install.sh</span>  <span class="comment"># ou install.ps1 no Windows</span>
+
+<span class="comment"># 2. Inicialize</span>
+<span class="cmd">python scripts/studio.py init capa.png work/proj --template punk-impact</span>
+
+<span class="comment"># 3. Preview</span>
+<span class="cmd">python scripts/studio.py preview work/proj --sheet</span>
+
+<span class="comment"># 4. Check + Render</span>
+<span class="cmd">python scripts/studio.py check work/proj</span>
+<span class="cmd">python scripts/studio.py render work/proj --upc 7891234567890 --formats 3x4 --outdir out</span>
+
+<span class="comment"># 5. Valide</span>
+<span class="cmd">python scripts/validate_motion.py out/7891234567890_3x4.mov --cover work/proj/source_flat.png</span>
+      </div>
+      <div class="quickstart-text">
+        <p><strong>1. Prepare o material</strong> — Capa plana (PNG/JPG/TIFF) ou PSD em camadas. Qualquer tamanho: 2048, 3000 ou 4K.</p>
+        <p><strong>2. Inicialize</strong> — Cria o projeto com camadas, efeitos e movimento inicial. Confira com <code>studio.py info</code>.</p>
+        <p><strong>3. Edite e faça preview</strong> — Adicione camadas, efeitos, keyframes. Veja a folha de contato ou GIF e itere.</p>
+        <p><strong>4. Cheque e renderize</strong> — <code>check</code> valida frame 0, loop, flash e brilho. <code>render</code> gera os .mov (3:4 e 1:1).</p>
+        <p><strong>5. Valide e entregue</strong> — <code>validate_motion.py</code> confirma resolução, SAR, bitrate, duração e codec. Tudo ✅ = pronto.</p>
+      </div>
+    </div>
   </div>
-  <div class="cards">
-    <a class="card" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art">
-      <span class="num">📦</span>
-      <h3>Repositório</h3>
-      <p>Código-fonte, issues, PRs.</p>
-    </a>
-    <a class="card" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases">
-      <span class="num">⬇️</span>
-      <h3>Releases</h3>
-      <p>Download do .skill e versões.</p>
-    </a>
-    <a class="card" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/README.md">
-      <span class="num">📖</span>
-      <h3>README</h3>
-      <p>Guia completo de uso.</p>
-    </a>
-    <a class="card" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/CONTRIBUTING.md">
-      <span class="num">🤝</span>
-      <h3>Contribuir</h3>
-      <p>Como contribuir com o projeto.</p>
-    </a>
+</section>
+
+<!-- ── Documentação ── -->
+<section>
+  <div class="wrap">
+    <div class="section-label">Documentação</div>
+    <h2 class="section-title">Guias</h2>
+    <div class="resources-grid">
+      <a class="resource-item" href="01-instalacao.md">
+        <span class="num">01</span>
+        <div><h4>Instalação</h4><p>Requisitos, one-click, manual, Docker, Windows/macOS.</p></div>
+      </a>
+      <a class="resource-item" href="02-guia-rapido.md">
+        <span class="num">02</span>
+        <div><h4>Guia rápido</h4><p>Primeiros passos em 5 minutos.</p></div>
+      </a>
+      <a class="resource-item" href="05-especificacoes-apple.md">
+        <span class="num">05</span>
+        <div><h4>Specs Apple</h4><p>Regras oficiais, bitrate, SAR, duração, flash.</p></div>
+      </a>
+      <a class="resource-item" href="06-validacao-e-troubleshooting.md">
+        <span class="num">06</span>
+        <div><h4>Troubleshooting</h4><p>Problemas comuns e soluções.</p></div>
+      </a>
+      <a class="resource-item" href="07-skill-e-agente.md">
+        <span class="num">07</span>
+        <div><h4>Skill e agente</h4><p>Claude / Copilot como diretor de motion.</p></div>
+      </a>
+      <a class="resource-item" href="08-faq.md">
+        <span class="num">08</span>
+        <div><h4>FAQ</h4><p>Perguntas frequentes.</p></div>
+      </a>
+      <a class="resource-item" href="10-motion-studio.md">
+        <span class="num">10</span>
+        <div><h4>Motion Studio</h4><p>Editor de motion: camadas, keyframes, efeitos.</p></div>
+      </a>
+      <a class="resource-item" href="11-formato-da-cena.md">
+        <span class="num">11</span>
+        <div><h4>Formato da cena</h4><p>scene.json: estrutura e validação.</p></div>
+      </a>
+      <a class="resource-item" href="12-catalogo-de-efeitos.md">
+        <span class="num">12</span>
+        <div><h4>Catálogo de efeitos</h4><p>8 efeitos de camada + 11 geradores.</p></div>
+      </a>
+      <a class="resource-item" href="13-photoshop-psd.md">
+        <span class="num">13</span>
+        <div><h4>Photoshop / PSD</h4><p>Importação de PSD em camadas.</p></div>
+      </a>
+      <a class="resource-item" href="14-criar-efeitos.md">
+        <span class="num">14</span>
+        <div><h4>Criar efeitos</h4><p>Plugins em Python.</p></div>
+      </a>
+      <a class="resource-item" href="15-diretor-criativo.md">
+        <span class="num">15</span>
+        <div><h4>Diretor criativo</h4><p>Perguntas e ideias para animação.</p></div>
+      </a>
+      <a class="resource-item" href="16-desempenho.md">
+        <span class="num">16</span>
+        <div><h4>Desempenho</h4><p>Tempo de render e otimização.</p></div>
+      </a>
+      <a class="resource-item" href="17-compatibilidade.md">
+        <span class="num">17</span>
+        <div><h4>Compatibilidade</h4><p>Windows, macOS, Docker.</p></div>
+      </a>
+      <a class="resource-item" href="18-privacidade-e-testes.md">
+        <span class="num">18</span>
+        <div><h4>Privacidade e testes</h4><p>Segurança e testes automatizados.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Links ── -->
+<section>
+  <div class="wrap">
+    <div class="section-label">Links</div>
+    <h2 class="section-title">Recursos</h2>
+    <div class="resources-grid">
+      <a class="resource-item" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art">
+        <span class="num">📦</span>
+        <div><h4>Repositório</h4><p>Código-fonte, issues, PRs.</p></div>
+      </a>
+      <a class="resource-item" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases">
+        <span class="num">⬇️</span>
+        <div><h4>Releases</h4><p>Download do .skill e versões.</p></div>
+      </a>
+      <a class="resource-item" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/README.md">
+        <span class="num">📖</span>
+        <div><h4>README</h4><p>Guia completo de uso.</p></div>
+      </a>
+      <a class="resource-item" href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/CONTRIBUTING.md">
+        <span class="num">🤝</span>
+        <div><h4>Contribuir</h4><p>Como contribuir com o projeto.</p></div>
+      </a>
+    </div>
   </div>
 </section>
 
 </div>
 
+<!-- ── Footer ── -->
 <footer>
-  <div class="logo">Monkey In Space Music Group</div>
-  <small>Feito com 🐒 por <b>Monkey In Space Music Group</b> · em colaboração com artistas, gravadoras e parceiros · Apple Music é marca da Apple Inc.</small>
-  <br><br>
-  <small><a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art">GitHub</a> · <a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases">Releases</a> · <a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/README.md">README</a></small>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Monkey In Space <span>Music Group</span></div>
+        <p class="footer-desc">Criado por Monkey In Space Music Group, pensando em colaborar e ajudar artistas, gravadoras e distribuidoras a produzir Apple Music Album Motion Art com qualidade profissional.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Projeto</h4>
+        <ul>
+          <li><a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art">Repositório</a></li>
+          <li><a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases">Releases</a></li>
+          <li><a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/README.md">README</a></li>
+          <li><a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/CONTRIBUTING.md">Contribuir</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Parceiro</h4>
+        <ul>
+          <li><a href="https://virginmusic.com/">Virgin Music Group</a></li>
+          <li><a href="https://help.apple.com/itc/musicstyleguide/en.lproj/itc7d4b161d8.html">Specs Apple</a></li>
+          <li><a href="https://itunespartner.apple.com/music/support/5245-album-motion-art-delivery">Motion Art Delivery</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Feito com 🐒 por Monkey In Space Music Group · em colaboração com artistas, gravadoras e parceiros</span>
+      <span><a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art">GitHub</a> · <a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/releases">Releases</a> · <a href="https://github.com/monkeyinspace-tech/apple-music-album-motion-art/blob/master/README.md">README</a></span>
+    </div>
+  </div>
 </footer>
 
 </body>
