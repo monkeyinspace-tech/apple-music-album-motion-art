@@ -11,8 +11,7 @@
 [![CI](https://github.com/monkeyinspace-tech/apple-music-album-motion-art/actions/workflows/ci.yml/badge.svg)](https://github.com/monkeyinspace-tech/apple-music-album-motion-art/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.9%2B-3776AB?logo=python&logoColor=white)
 ![FFmpeg](https://img.shields.io/badge/ffmpeg-required-007808?logo=ffmpeg&logoColor=white)
-![Input](https://img.shields.io/badge/entrada-PNG%20%C2%B7%20JPG%20%C2%B7%20TIFF%20%C2%B7%203000%C2%B2%20%C2%B7%204K%20%C2%B7%20PSD-ff4fa3)
-[![CI](https://github.com/monkeyinspace-tech/apple-music-album-motion-art/actions/workflows/ci.yml/badge.svg)](https://github.com/monkeyinspace-tech/apple-music-album-motion-art/actions)
+![Stars](https://img.shields.io/github/stars/monkeyinspace-tech/apple-music-album-motion-art?style=social)
 
 [🇧🇷 Português](README.md) · [🇺🇸 English](README.en.md)
 
@@ -106,6 +105,7 @@ pip install -r requirements.txt                         # núcleo + leitura de P
 pip install -r requirements-ai.txt                      # (opcional) recorte de pessoa em capa plana
 python scripts/studio.py doctor --selftest              # confere tudo em ~1 min
 ```
+
 Windows, macOS, Docker: [`docs/01`](docs/01-instalacao.md) e [`docs/17`](docs/17-compatibilidade.md).
 
 ## 🚀 Início rápido
@@ -122,7 +122,43 @@ python scripts/validate_motion.py out/0000000000000_3x4.mov --cover work/demo/so
 python scripts/studio.py init minha_capa.psd work/proj --impact "[900,1300]"
 python scripts/studio.py init minha_capa.png work/proj --template punk-impact --remove-badge
 ```
+
 Edição (`add-layer`, `add-effect`, `set`…): [`docs/10`](docs/10-motion-studio.md) · formato da cena: [`docs/11`](docs/11-formato-da-cena.md) · efeitos: [`docs/12`](docs/12-catalogo-de-efeitos.md) · PSD: [`docs/13`](docs/13-photoshop-psd.md) · plugins: [`docs/14`](docs/14-criar-efeitos.md).
+
+## 📖 Como usar (passo a passo)
+
+### 1. Prepare o material
+- **PSD em camadas** ou **capa plana** (PNG/JPG/TIFF, 2048×2048, 3000×3000 ou 4K).
+- Se a capa não for quadrada: use `--fit crop` (recorta ao centro) ou `--fit extend` (estende bordas).
+- Selo *Parental Advisory*: a Apple não permite na arte de motion. Remova com `--remove-badge` ou `--badge-box`.
+
+### 2. Inicialize o projeto
+```bash
+python scripts/studio.py init capa.png work/proj --template punk-impact --intensity bold
+python scripts/studio.py info work/proj   # confira as camadas
+```
+
+### 3. Edite e faça preview
+```bash
+python scripts/studio.py add-layer work/proj --effect embers --param origin=[742,1325] --param count=80
+python scripts/studio.py add-effect work/proj title glow --param radius=40
+python scripts/studio.py set work/proj subject.transform.rotation '{"wave":"sin","amp":2}'
+python scripts/studio.py preview work/proj --sheet     # folha de contato (6 instantes)
+python scripts/studio.py preview work/proj --gif work/preview.gif
+```
+
+### 4. Cheque e renderize
+```bash
+python scripts/studio.py check work/proj              # frame 0, loop, flash, brilho
+python scripts/studio.py render work/proj --upc 7891234567890 --formats 3x4 --outdir out
+python scripts/studio.py render work/proj --upc 7891234567890 --formats 1x1 --outdir out
+```
+
+### 5. Valide e entregue
+```bash
+python scripts/validate_motion.py out/7891234567890_3x4.mov out/7891234567890_1x1.mov --cover work/proj/source_flat.png
+```
+Tudo ✅ = pronto para enviar à distribuidora.
 
 ## ⏱ Quanto tempo leva?
 
@@ -134,17 +170,15 @@ Edição (`add-layer`, `add-effect`, `set`…): [`docs/10`](docs/10-motion-studi
 | PSD real 2000²–3000² (16–30 camadas, ajustes) | **~9 min** | **9–19 min** |
 | Capa/PSD 4K (motor 3840) | — | **17–23 min** |
 
-Rápido com poucas camadas e 3:4; mais lento com PSDs complexos, 1:1 nativo 3000/4K e durações longas. Estime a **sua** máquina: `python scripts/studio.py doctor --bench`. Detalhes: [`docs/16`](docs/16-desempenho.md).
+Estime a **sua** máquina: `python scripts/studio.py doctor --bench`. Detalhes: [`docs/16`](docs/16-desempenho.md).
 
 ## 📐 Regras da Apple que o projeto cobre
-
-<div align="center"><img src="docs/assets/safe-area.png" alt="Áreas do 3:4" width="80%"></div>
 
 H.264 **45–100 Mbps** (ou ProRes 422/4444) · **SAR 1:1** · mudo · Rec.709 · 8–35 s (algumas distribuidoras exigem 15–35 s: o projeto **avisa**) · primeiro frame = capa estática · sem selo *Parental Advisory* na arte · sem flashes. Fontes oficiais e divergências entre distribuidoras: [`docs/05`](docs/05-especificacoes-apple.md) — Apple: [Motion Album Artwork](https://help.apple.com/itc/musicstyleguide/en.lproj/itc7d4b161d8.html) · [Album Motion Art Delivery](https://itunespartner.apple.com/music/support/5245-album-motion-art-delivery).
 
 ## 🤖 Skill e agente (Claude / Copilot)
 
-A pasta [`claude/`](claude/) traz um **skill** e **agentes** que atuam como diretor de motion: **perguntam** o que você quer animar, montam as camadas, mostram previews, iteram, criam efeitos que não existem, rodam o `check` e validam. `make skill` gera `dist/apple-motion-art.skill`. Guia: [`docs/07`](docs/07-skill-e-agente.md) · perguntas e ideias: [`docs/15`](docs/15-diretor-criativo.md).
+A pasta [`claude/`](claude/) traz um **skill** e **agentes** que atuam como diretor de motion: **perguntam** o que você quer animar, montam as camadas, mostram previews, iteram, criam efeitos que não existem, rodam o `check` e validam. `make skill` gera `dist/apple-music-album-motion-art.skill`. Guia: [`docs/07`](docs/07-skill-e-agente.md) · perguntas e ideias: [`docs/15`](docs/15-diretor-criativo.md).
 
 ## 🧰 Templates
 
@@ -168,7 +202,7 @@ Tudo roda **localmente**. Capas e PSDs inéditos **não vão para o repositório
 
 - Recorte por IA pode errar em cabelo/objetos finos — revise em tela cheia ou use **PSD**.
 - PSD: camadas de ajuste/efeitos são **aproximadas** (camada `grade`); smart objects/estilos complexos podem divergir — rasterize.
-- Capas < 2048 px são ampliadas no 1:1. O vídeo é **mudo** (sem sincronia com áudio).
+- Capas < 2048 px são ampliadas no 1:1. O vídeo é **mudo** (não sincroniza com áudio).
 - O validador é uma checagem prévia local: a aprovação vem da sua distribuidora/Apple.
 - Não é produto oficial da Apple e não garante aprovação.
 
@@ -176,8 +210,16 @@ Tudo roda **localmente**. Capas e PSDs inéditos **não vão para o repositório
 
 [Instalação](docs/01-instalacao.md) · [Guia rápido](docs/02-guia-rapido.md) · [Specs Apple](docs/05-especificacoes-apple.md) · [Troubleshooting](docs/06-validacao-e-troubleshooting.md) · [Skill/agente](docs/07-skill-e-agente.md) · [FAQ](docs/08-faq.md) · [Direitos](docs/09-direitos-e-explicito.md) · [Motion Studio](docs/10-motion-studio.md) · [Cena](docs/11-formato-da-cena.md) · [Efeitos](docs/12-catalogo-de-efeitos.md) · [PSD](docs/13-photoshop-psd.md) · [Plugins](docs/14-criar-efeitos.md) · [Diretor criativo](docs/15-diretor-criativo.md) · [Desempenho](docs/16-desempenho.md) · [Compatibilidade](docs/17-compatibilidade.md) · [Privacidade](docs/18-privacidade-e-testes.md) · [Publicar no GitHub](docs/github-setup.md)
 
-## 🤝 Contribuindo · 📄 Licença
+---
 
-[`CONTRIBUTING.md`](CONTRIBUTING.md) · [`CHANGELOG.md`](CHANGELOG.md) · [MIT](LICENSE) (modelos do `rembg` têm licenças próprias).
+## 🏢 Créditos e parceiros
 
-<div align="center"><sub>Feito com 🐒 por <b>Monkey In Space Music Group</b> · <a href="https://github.com/monkeyinspace-tech">@monkeyinspace-tech</a> · Apple Music é marca da Apple Inc.; este projeto não é afiliado nem endossado pela Apple.</sub></div>
+**Criado por [Monkey In Space Music Group](https://github.com/monkeyinspace-tech)** — pensando em colaborar e ajudar **artistas**, **gravadoras** e **distribuidoras** a produzir **Apple Music Album Motion Art** com qualidade profissional, de forma repetível e acessível.
+
+**Parceiro:** [Virgin Music Group](https://virginmusic.com/) — apoio e distribuição.
+
+**Autor:** Thiago Monteiro (Monkey In Space) · [GitHub](https://github.com/uaigoiano-max) · [Instagram](https://www.instagram.com/zanonmusic/)
+
+**Licença:** [MIT](LICENSE) (código) · Modelos do `rembg` têm licenças próprias.
+
+<div align="center"><sub>Feito com 🐒 por <b>Monkey In Space Music Group</b> · em colaboração com artistas, gravadoras e parceiros · Apple Music é marca da Apple Inc.; este projeto não é afiliado nem endossado pela Apple.</sub></div>
